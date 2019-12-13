@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!-- /**
+ * Magiccart 
+ * @category    Magiccart 
+ * @copyright   Copyright (c) 2014 Magiccart (http://www.magiccart.net/) 
+ * @license     http://www.magiccart.net/license-agreement.html
+ * @Author: DOng NGuyen<nguyen@dvn.com>
+ * @@Create Date: 2017-01-23 18:59:34
+ * @@Modify Date: 2017-02-22 21:23:11
+ * @@Function:
+ */ -->
+ 
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Magento/Widget/etc/widget.xsd">
+	<widget id="magiccart_magicslider" class="Magiccart\Magicslider\Block\Widget\Slider">
+		<label translate="true">Magicslider Widget</label>
+		<description>Magicslider</description>
+		<parameters>
+            <parameter name="identifier" xsi:type="select" source_model="Magiccart\Magicslider\Model\Widget\Config\Slider" required="true" visible="true" sort_order="0" >
+                <label translate="true">Identifier</label>
+                <description translate="true"><![CDATA[Identifier create or manage in Admin Panel > Magiccart > Magic Slider > Slider. ]]></description>
+            </parameter>
+            <parameter name="class" xsi:type="text" required="false" visible="true">
+                <label translate="true">Extra class name</label>
+                <description translate="true"><![CDATA[Style particular content element differently - add a class name and refer to it in custom CSS. ]]></description>
+            </parameter>
+            <parameter name="template" xsi:type="select" required="true" visible="true">
+                <label translate="true">Template</label>
+                <options>
+                    <option name="default" value="magicslider.phtml" selected="true">
+                        <label translate="true">Default</label>
+                    </option>
+                </options>
+            </parameter>
+		</parameters>
+	</widget>
+</widgets>

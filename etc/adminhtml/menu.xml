@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!-- /**
+ * Magiccart 
+ * @category    Magiccart 
+ * @copyright   Copyright (c) 2014 Magiccart (http://www.magiccart.net/) 
+ * @license     http://www.magiccart.net/license-agreement.html
+ * @Author: DOng NGuyen<nguyen@dvn.com>
+ * @@Create Date: 2016-02-23 18:59:34
+ * @@Modify Date: 2016-04-22 17:12:32
+ * @@Function:
+ */ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+    	<update id="magiccart" title="Magiccart" module="Magiccart_Magicslider" sortOrder="10" resource="Magiccart_Magicslider::magiccart"/>
+
+	        <add id="Magiccart_Magicslider::magicslider" title="Magic Slider" module="Magiccart_Magicslider" sortOrder="10" parent="magiccart" resource="Magiccart_Magicslider::magicslider"/>
+
+				<add id="Magiccart_Magicslider::magicslider_index" title="Slider" module="Magiccart_Magicslider" sortOrder="10" parent="Magiccart_Magicslider::magicslider" action="magicslider/index" resource="Magiccart_Magicslider::magicslider_index"/>
+    </menu>
+</config>

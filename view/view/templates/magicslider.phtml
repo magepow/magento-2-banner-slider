@@ -1,0 +1,91 @@
+<?php
+if(!$this->getStatus()) return;
+$selector = 'alo-content-'.rand(0,999999999);
+$slider = $this->getSlider();
+if(!count($slider)) return;
+?>
+<div class="<?php /* @escapeNotVerified */ echo $selector ?>">
+    <div class="magicslider <?php /* @escapeNotVerified */ echo $this->getData('class')?>"
+    <?php foreach ($this->getFrontendCfg() as $opt) :?>
+        data-<?php /* @escapeNotVerified */ echo $opt ?>='<?php /* @escapeNotVerified */ echo $this->getData($opt) ?>'
+    <?php endforeach;?>  
+    data-adaptive-height="true"
+    >
+        <?php $i=0; foreach ($slider as $item) :?>
+            <?php
+                if($item['disabled']) continue;
+                $image = $item['file'];
+                $type  = $item['media_type'];
+                $label = $item['label'];
+            ?>
+			<div class="item <?php echo $type ?>"
+                <?php /* @escapeNotVerified */ echo ($item['video_url']) ? 'data-video="'. $item['video_url'] .'"' : ''; ?> 
+            >
+    			<a href="<?php /* @escapeNotVerified */ echo isset($item['link']) ? $item['link'] : '#'; ?>">
+    				<img class="img-responsive" src="<?php /* @escapeNotVerified */ echo $this->getImage($image)?>" alt="<?php /* @escapeNotVerified */ echo __($label) ?>" title="<?php /* @escapeNotVerified */ echo __($label) ?>" />
+    			</a>
+				<?php echo isset($item['caption']) ? $item['caption'] : ''; ?>
+
+			</div>
+        <?php endforeach ?>
+    </div>
+</div>
+
+<script type="text/javascript">
+    require([
+        'jquery',
+        'magiccart/slick',
+        'alothemes',
+        ], function($, slick){
+            var el  = $('.<?php echo $selector ?> .magicslider');
+            var iClass = '.alo-item';
+            var options = el.data();
+            if(iClass === undefined){
+                el.children().addClass('alo-item');
+                iClass = '.alo-item';
+            }
+            var selector = el.selector;
+            var classes = selector + ' '+ iClass;
+            var padding = options.padding;
+            var style = padding ? classes + '{float: left; padding-left: '+padding+'px; padding-right:'+padding+'px} ' + selector + '{margin-left: -'+padding+'px; margin-right: -'+padding+'px}' : '';
+            if(options.slidesToShow){
+                el.on('init', function(event, slick){
+                    var video = $(this).find('.external-video');
+                    video.click(function(event) {
+                        var $this = $(this);
+                        var img = $this.find('img');
+                        event.preventDefault();
+                        var url = $(this).data('video');
+                        url = url.replace("://vimeo.com/", "://player.vimeo.com/video/");
+                        url = url.replace("://www.youtube.com/watch?v=", "://youtube.com/embed/");
+                        url = url + '?autoplay=1&badge=0';
+                        var iframe = '<iframe class="iframe-video" src="' + url + '" width="' + img.width() + '" height="' + img.height()  + '" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>'; 
+                        $this.append(iframe).addClass('embed');
+                        img.hide();
+                    });
+                });
+
+                var slider = el.slick(options);
+                el.on('beforeChange', function(){
+                    var video = $(this).find('.external-video');
+                    video.removeClass('embed').find('img').show();
+                    video.find('.iframe-video').remove()
+                });
+                slider.on( "click", ".item", function() {
+                    el.slick('slickSetOption', "autoplay",false,false);
+                }); 
+            }
+
+    });
+
+    // require([
+    //     'jquery',
+    //     'fotorama/fotorama',
+    // ], function ($, fotorama) {
+    //     $('.fotorama').fotorama({
+    //         width: 700,
+    //         maxwidth: '100%',
+    //     });
+    // });
+
+</script>

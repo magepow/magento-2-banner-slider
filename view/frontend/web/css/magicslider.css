@@ -1,0 +1,15 @@
+/**
+ * Magiccart 
+ * @category 	Magiccart 
+ * @copyright 	Copyright (c) 2014 Magiccart (http://www.magiccart.net/) 
+ * @license 	http://www.magiccart.net/license-agreement.html
+ * @Author:Magiccart<team.magiccart@gmail.com>
+ * @@Create Date:2014-04-26 11:18:55
+ * @@Modify Date: 2017-02-21 23:47:28
+ * @@Function:*/
+.magicslider >.item:nth-child(n+2), .magicslider >.item .figcaption{display: none;}
+.magicslider >.item.slick-slide, .magicslider >.item.slick-slide .figcaption{display: block;}
+.magicslider{text-align: center; display:block}
+.external-video:after {background: rgba(0, 0, 0, 0) url("../images/gallery-sprite.png") repeat scroll right bottom;bottom: 0;content: "";height: 100px;left: 0;margin: auto;position: absolute;right: 0;top: 12px;width: 100px;}
+.external-video.embed:after {display: none;}
+

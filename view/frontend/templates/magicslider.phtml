@@ -1,0 +1,90 @@
+<?php
+if(!$this->getStatus()) return;
+$selector = 'alo-content-'.rand(0,999999999);
+$slider = $this->getSlider();
+if(!count($slider)) return;
+?>
+<div class="<?php echo $selector ?>">
+    <div class="magicslider <?php echo $this->getData('class')?>"
+    <?php foreach ($this->getFrontendCfg() as $opt) :?>
+        data-<?php echo $opt ?>='<?php echo $this->getData($opt) ?>'
+    <?php endforeach;?>  
+    data-adaptive-height="true"
+    >
+        <?php foreach ($slider as $image) :?>
+			<div class="item <?php echo $image->getmediaType() ?>"
+                <?php echo ($image['video_url']) ? 'data-video="'. $image['video_url'] .'"' : ''; ?> 
+            >
+    			<a href="<?php echo isset($image['link']) ? $image['link'] : '#'; ?>">
+                    <picture>
+                        <?php
+                            $img_mobile = $image->getUrlMobile();
+                            echo $img_mobile ? '<source media="(max-width: ' . $image->getWidthMobile() . 'px)" srcset=" ' . $img_mobile . ' ">' : '';     
+                        ?>
+                        <img class="img-responsive" src="<?php echo $image->getUrl() ?>" alt="<?php echo __($image->getLabel()) ?>" title="<?php echo __($image->getLabel()) ?>" />
+                    </picture>
+    			</a>
+				<?php echo isset($image['caption']) ? $image['caption'] : ''; ?>
+			</div>
+        <?php endforeach ?>
+    </div>
+</div>
+
+<script type="text/javascript">
+    require([
+        'jquery',
+        'magiccart/slick',
+        'alothemes',
+        ], function($, slick){
+            var el  = $('.<?php echo $selector ?> .magicslider');
+            if($('body').hasClass('rtl')){
+                el.attr('dir', 'rtl');
+                el.data( 'rtl', true );
+                // el.data( 'infinite', false );
+                // el.data( 'slides-to-scroll', -1 );
+            }
+            var options = el.data();
+            if(iClass === undefined){
+                el.children().addClass('alo-item');
+                var iClass = '.alo-item';
+            }
+            var selector = el.selector;
+            var classes = selector + ' '+ iClass;
+            var padding = options.padding;
+            var style = padding ? classes + '{float: left; padding-left: '+padding+'px; padding-right:'+padding+'px} ' + selector + '{margin-left: -'+padding+'px; margin-right: -'+padding+'px}' : '';
+            $('head').append('<style type="text/css">'+style+'</style>');
+            if(options.slidesToShow){
+                el.on('init', function(event, slick){
+                    var video = $(this).find('.external-video');
+                    video.click(function(event) {
+                        var $this = $(this);
+                        var img = $this.find('img');
+                        event.preventDefault();
+                        var url = $(this).data('video');
+                        url = url.replace("://vimeo.com/", "://player.vimeo.com/video/");
+                        url = url.replace("://www.youtube.com/watch?v=", "://youtube.com/embed/");
+                        url = url + '?autoplay=1&badge=0';
+                        var iframe = '<iframe class="iframe-video" src="' + url + '" width="' + img.width() + '" height="' + img.height()  + '" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>'; 
+                        $this.append(iframe).addClass('embed');
+                        img.hide();
+                    });
+                });
+
+                var slider = el.slick(options);
+                el.on('beforeChange', function(event, slick, currentSlide, nextSlide){
+                    var video = $(this).find('.external-video');
+                    video.removeClass('embed').find('img').show();
+                    video.find('.iframe-video').remove();
+                    // var slides = $(slick.$slides);
+                    // slides.removeClass('abc-slick-active');
+                    // var nxt_slider = $(slick.$slides.get(nextSlide));
+                    // if(nxt_slider.length) nxt_slider.addClass('abc-slick-active');
+                });
+                slider.on( "click", ".item", function() {
+                    el.slick('slickSetOption', "autoplay",false,false);
+                }); 
+            }
+
+    });
+
+</script>
