@@ -9,7 +9,8 @@ if(!count($slider)) return;
     <?php foreach ($this->getFrontendCfg() as $opt) :?>
         data-<?php echo $opt ?>='<?php echo $this->getData($opt) ?>'
     <?php endforeach;?>  
-    data-adaptive-height="true"
+    data-adaptive-height="false"
+    data-lazy-load="ondemand"
     >
         <?php foreach ($slider as $image) :?>
 			<div class="item <?php echo $image->getmediaType() ?>"
@@ -21,7 +22,7 @@ if(!count($slider)) return;
                             $img_mobile = $image->getUrlMobile();
                             echo $img_mobile ? '<source media="(max-width: ' . $image->getWidthMobile() . 'px)" srcset=" ' . $img_mobile . ' ">' : '';     
                         ?>
-                        <img class="img-responsive" src="<?php echo $image->getUrl() ?>" alt="<?php echo __($image->getLabel()) ?>" title="<?php echo __($image->getLabel()) ?>" />
+                        <img class="img-responsive" src="<?php echo $image->getUrl() ?>" alt="<?php echo __($image->getLabel()) ?>" title="<?php echo __($image->getLabel()) ?>" width="<?php echo $image->getWidth() ?>" height="<?php echo $image->getHeight() ?>" />
                     </picture>
     			</a>
 				<?php echo isset($image['caption']) ? $image['caption'] : ''; ?>
@@ -54,6 +55,13 @@ if(!count($slider)) return;
             var style = padding ? classes + '{float: left; padding-left: '+padding+'px; padding-right:'+padding+'px} ' + selector + '{margin-left: -'+padding+'px; margin-right: -'+padding+'px}' : '';
             $('head').append('<style type="text/css">'+style+'</style>');
             if(options.slidesToShow){
+                var lazy  = el.find('img.lazyload');
+                if(lazy.length){
+                    lazy.each(function(index) {
+                        $(this).data('lazy', $(this).data('src'));
+                        // $(this).attr('src', $(this).data('src')); // fixed data-adaptive-height="true"
+                    });
+                }
                 el.on('init', function(event, slick){
                     var video = $(this).find('.external-video');
                     video.click(function(event) {

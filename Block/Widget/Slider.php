@@ -1,12 +1,12 @@
 <?php
 /**
  * Magiccart 
- * @category 	Magiccart 
- * @copyright 	Copyright (c) 2014 Magiccart (http://www.magepow.com/) 
- * @license 	http://www.magepow.com/license-agreement.html
+ * @category    Magiccart 
+ * @copyright   Copyright (c) 2014 Magiccart (http://www.magepow.com/) 
+ * @license     http://www.magepow.com/license-agreement.html
  * @Author: DOng NGuyen<nguyen@dvn.com>
  * @@Create Date: 2017-01-05 10:40:51
- * @@Modify Date: 2019-09-09 18:09:48
+ * @@Modify Date: 2020-02-12 18:09:48
  * @@Function:
  */
 
@@ -112,12 +112,18 @@ class Slider extends \Magento\Framework\View\Element\Template implements \Magent
                     continue;
                 }
                 $image['url'] = $this->getMediaUrl($image['file']);
+                $file = self::MEDIA_PATH . $image['file'];
+                $absPath = $mediaPath .$file;
+                $_image->open($absPath);
+                $image['width'] = $_image->getOriginalWidth();
+                $image['height'] = $_image->getOriginalHeight();           
                 if(isset($sliderMobile[$i])){
                     $image['url_mobile'] = $sliderMobile[$i]->getUrl();
                     $file = self::MEDIA_PATH . $sliderMobile[$i]->getFile();
                     $absPath = $mediaPath .$file;
                     $_image->open($absPath);
-                    $image['width_mobile'] = $_image->getOriginalWidth();    
+                    $image['width_mobile'] = $_image->getOriginalWidth();
+                    $image['height_mobile'] = $_image->getOriginalHeight();
                 }
                 $images->addItem(new \Magento\Framework\DataObject($image));
                 $i++;
