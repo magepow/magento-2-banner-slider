@@ -15,6 +15,15 @@ Run the following command in Magento 2 root folder:
 
 `php bin/magento setup:static-content:deploy -f`
 
+## Highlight Features
+- Add a banner slider flexibly to any page on live store, such as homepage, category page, product page, CMS page…
+- Add Unlimited banners to slide out on page as flow of image
+- Ability to create banner sliders with any content: images, videos, URL links,...
+- Ability to re-size (width, height), change its text color/size, set up images loading speed, animation effect..
+- Enable/ Disable sliders at anytime
+- Upload images or videos
+- Allow to upload particular image in mobile
+
 
 ## Magiccart Magicslider user guide
 [USE GUIDE](https://docs.alothemes.com/m2/theme/gecko/#sub65)
