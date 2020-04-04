@@ -9,7 +9,6 @@ if(!count($slider)) return;
     <?php foreach ($this->getFrontendCfg() as $opt) :?>
         data-<?php echo $opt ?>='<?php echo $this->getData($opt) ?>'
     <?php endforeach;?>  
-    data-adaptive-height="false"
     data-lazy-load="ondemand"
     >
         <?php foreach ($slider as $image) :?>
@@ -22,7 +21,7 @@ if(!count($slider)) return;
                             $img_mobile = $image->getUrlMobile();
                             echo $img_mobile ? '<source media="(max-width: ' . $image->getWidthMobile() . 'px)" srcset=" ' . $img_mobile . ' ">' : '';     
                         ?>
-                        <img class="img-responsive" src="<?php echo $image->getUrl() ?>" alt="<?php echo __($image->getLabel()) ?>" title="<?php echo __($image->getLabel()) ?>" width="<?php echo $image->getWidth() ?>" height="<?php echo $image->getHeight() ?>" />
+                        <img class="img-responsive <?php /* @escapeNotVerified */ echo $this->getData('image-class') ?>" src="<?php echo $image->getUrl() ?>" alt="<?php echo __($image->getLabel()) ?>" title="<?php echo __($image->getLabel()) ?>" width="<?php echo $image->getWidth() ?>" height="<?php echo $image->getHeight() ?>" />
                     </picture>
     			</a>
 				<?php echo isset($image['caption']) ? $image['caption'] : ''; ?>

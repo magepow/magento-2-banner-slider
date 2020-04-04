@@ -122,14 +122,15 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             );
         }
 
-        // $fieldset->addField('image', 'image',
-        //     [
-        //         'label' => __('Image'),
-        //         'title' => __('Image'),
-        //         'name'  => 'image',
-        //         'required' => true,
-        //     ]
-        // );
+        $fieldset->addField('image-class', 'text',
+            [
+                'label' => __('Image class'),
+                'title' => __('Image class'),
+                'name'  => 'image-class',
+                'required' => false,
+                'value' => 'loaded',
+            ]
+        );
 
 
         /* Check is single store mode */

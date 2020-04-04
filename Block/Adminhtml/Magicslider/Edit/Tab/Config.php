@@ -143,6 +143,30 @@ class Config extends \Magento\Backend\Block\Widget\Form\Generic implements \Mage
         );
 
         $fieldset->addField(
+            'adaptive-height', 
+            'select',
+            [
+                'label' => __('Adapts Height'),
+                'title' => __('Adapts Height'),
+                'name' => 'adaptive-height',
+                'options' => $this->_trueFalse,
+                'value' => 'false',
+            ]
+        );
+
+        $fieldset->addField(
+            'fade', 
+            'select',
+            [
+                'label' => __('Fade'),
+                'title' => __('Fade'),
+                'name' => 'fade',
+                'options' => $this->_trueFalse,
+                'value' => 'false',
+            ]
+        );
+
+        $fieldset->addField(
             'rows',
             'select',
             [
