@@ -114,6 +114,7 @@ class Slider extends \Magento\Framework\View\Element\Template implements \Magent
                 $image['url'] = $this->getMediaUrl($image['file']);
                 $file = self::MEDIA_PATH . $image['file'];
                 $absPath = $mediaPath .$file;
+                if( !file_exists($absPath) ) continue;
                 $_image->open($absPath);
                 $image['width'] = $_image->getOriginalWidth();
                 $image['height'] = $_image->getOriginalHeight();           
