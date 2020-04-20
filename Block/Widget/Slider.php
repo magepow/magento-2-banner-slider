@@ -122,6 +122,7 @@ class Slider extends \Magento\Framework\View\Element\Template implements \Magent
                     $image['url_mobile'] = $sliderMobile[$i]->getUrl();
                     $file = self::MEDIA_PATH . $sliderMobile[$i]->getFile();
                     $absPath = $mediaPath .$file;
+                    if( !file_exists($absPath) ) continue;
                     $_image->open($absPath);
                     $image['width_mobile'] = $_image->getOriginalWidth();
                     $image['height_mobile'] = $_image->getOriginalHeight();
