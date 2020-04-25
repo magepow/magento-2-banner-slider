@@ -14,14 +14,10 @@ namespace Magiccart\Magicslider\Model;
 
 class Magicslider extends \Magento\Framework\Model\AbstractModel
 {
-
-    protected $_scopeConfig;
-    protected $_magicsliderCollectionFactory;
-
     /**
-     * @var \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory
+     * @var \Magiccart\Magicslider\Model\ResourceModel\Magicslider\CollectionFactory
      */
-    protected $_productCollectionFactory;
+    protected $_magicsliderCollectionFactory;
 
     public function __construct(
         \Magento\Framework\Model\Context $context,
@@ -29,8 +25,7 @@ class Magicslider extends \Magento\Framework\Model\AbstractModel
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
         \Magiccart\Magicslider\Model\ResourceModel\Magicslider\CollectionFactory $magicsliderCollectionFactory,
         \Magiccart\Magicslider\Model\ResourceModel\Magicslider $resource,
-        \Magiccart\Magicslider\Model\ResourceModel\Magicslider\Collection $resourceCollection,
-        \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollectionFactory
+        \Magiccart\Magicslider\Model\ResourceModel\Magicslider\Collection $resourceCollection
     ) {
         parent::__construct(
             $context,
@@ -40,38 +35,6 @@ class Magicslider extends \Magento\Framework\Model\AbstractModel
         );
         $this->_magicsliderCollectionFactory = $magicsliderCollectionFactory;
         $this->_productCollectionFactory = $productCollectionFactory;
-        $this->_scopeConfig= (object) $scopeConfig->getValue(
-            'magicslider',
-            \Magento\Store\Model\ScopeInterface::SCOPE_STORE
-        );
-    }
-
-    /**
-     * Retrieve post related products
-     * @param  int $storeId
-     * @return \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory
-     */
-    public function getRelatedProducts($storeId = null)
-    {
-        if (!$this->hasData('related_products')) {
-
-            $collection = $this->_productCollectionFactory->create();
-
-            if (!is_null($storeId)) {
-                $collection->addStoreFilter($storeId);
-            } elseif ($storeIds = $this->getStoreId()) {
-                $collection->addStoreFilter($storeIds[0]);
-            }
-
-            $cfg = $this->_scopeConfig->general;
-            if(isset($cfg['attributeCode'])){
-                $collection->addAttributeToFilter($cfg['attributeCode'],  $this->getOptionId());
-            }
-
-            $this->setData('related_products', $collection);
-        }
-
-        return $this->getData('related_products');
     }
 
 }
