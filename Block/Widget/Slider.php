@@ -57,7 +57,7 @@ class Slider extends \Magento\Framework\View\Element\Template implements \Magent
         $this->_filesystem = $context->getFilesystem();
         $this->_directory = $this->_filesystem->getDirectoryWrite(DirectoryList::MEDIA);
         $this->backendUrl   = $backendUrl;
-        $this->_magicsliderFactory = $magicsliderFactory->create();
+        $this->_magicsliderFactory = $magicsliderFactory;
 
         $this->_sysCfg= (object) $context->getScopeConfig()->getValue(
             'magicslider',
@@ -71,7 +71,7 @@ class Slider extends \Magento\Framework\View\Element\Template implements \Magent
     {
         $identifier = $this->getIdentifier();
         // $store = $this->_storeManager->getStore()->getStoreId();
-        $this->_magicslider = $this->_magicsliderFactory->load( $identifier, 'identifier');
+        $this->_magicslider = $this->_magicsliderFactory->create()->load( $identifier, 'identifier');
         $data = json_decode($this->_magicslider->getConfig(), true);
         if(!$data){
             echo '<div class="message-error error message">Identifier "'. $identifier . '" not exist.</div> ';          
