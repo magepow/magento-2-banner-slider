@@ -6,7 +6,7 @@
  * @license     http://www.magiccart.net/license-agreement.html
  * @Author: DOng NGuyen<nguyen@dvn.com>
  * @@Create Date: 2016-01-11 23:15:05
- * @@Modify Date: 2016-03-24 16:52:18
+ * @@Modify Date: 2020-04-26 16:52:18
  * @@Function:
  */
 
@@ -14,6 +14,14 @@ namespace Magiccart\Magicslider\Model;
 
 class Magicslider extends \Magento\Framework\Model\AbstractModel
 {
+
+    /**
+     * Name of object id field
+     *
+     * @var string
+     */
+    protected $_idFieldName = 'magicslider_id';
+
     /**
      * @var \Magiccart\Magicslider\Model\ResourceModel\Magicslider\CollectionFactory
      */
