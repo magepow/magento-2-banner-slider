@@ -72,6 +72,9 @@ class Slider extends \Magento\Framework\View\Element\Template implements \Magent
         $identifier = $this->getIdentifier();
         // $store = $this->_storeManager->getStore()->getStoreId();
         $this->_magicslider = $this->_magicsliderFactory->create()->load( $identifier, 'identifier');
+        if( !$this->_magicslider || !$this->_magicslider->getStatus()){
+            return;
+        }
         $data = json_decode($this->_magicslider->getConfig(), true);
         if(!$data){
             echo '<div class="message-error error message">Identifier "'. $identifier . '" not exist.</div> ';          

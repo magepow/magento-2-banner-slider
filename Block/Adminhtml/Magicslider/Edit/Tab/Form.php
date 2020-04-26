@@ -6,13 +6,13 @@
  * @license     http://www.magiccart.net/license-agreement.html
  * @Author: DOng NGuyen<nguyen@dvn.com>
  * @@Create Date: 2016-01-05 10:40:51
- * @@Modify Date: 2016-03-29 13:54:35
+ * @@Modify Date: 2020-04-26 13:54:35
  * @@Function:
  */
 
 namespace Magiccart\Magicslider\Block\Adminhtml\Magicslider\Edit\Tab;
 
-use \Magento\Catalog\Model\Product\Attribute\Source\Status;
+use Magiccart\Magicslider\Model\Status;
 
 class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magento\Backend\Block\Widget\Tab\TabInterface
 {
