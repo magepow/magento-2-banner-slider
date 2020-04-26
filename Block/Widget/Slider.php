@@ -6,7 +6,7 @@
  * @license     http://www.magepow.com/license-agreement.html
  * @Author: DOng NGuyen<nguyen@dvn.com>
  * @@Create Date: 2017-01-05 10:40:51
- * @@Modify Date: 2020-02-12 18:09:48
+ * @@Modify Date: 2020-04-26 18:09:48
  * @@Function:
  */
 
@@ -22,24 +22,33 @@ class Slider extends \Magento\Framework\View\Element\Template implements \Magent
 
     public $_urlMedia;
 
+    protected $_filesystem;
+
+    protected $_directory;
+
     /**
      * @var \Magento\Framework\Data\CollectionFactory
      */
     protected $_collectionFactory;
 
+    /**
+     * @var \Magento\Framework\Image\AdapterFactory
+     */
     protected $_imageFactory;
-    protected $_filesystem;
-    protected $_directory;
+
+    /**
+     * @var \Magiccart\Magicslider\Model\MagicsliderFactory
+     */
+    protected $_magicsliderFactory;
 
     protected $_magicslider;
-    protected $_images = array();
-    protected $_imagesMobile = array();
 
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
         \Magento\Framework\Data\CollectionFactory $collectionFactory,
         \Magento\Framework\Image\AdapterFactory $imageFactory,
-        \Magiccart\Magicslider\Model\Magicslider $magicslider,
+        \Magento\Backend\Model\UrlInterface $backendUrl,
+        \Magiccart\Magicslider\Model\MagicsliderFactory $magicsliderFactory,
         array $data = []
     ) {
 
@@ -47,8 +56,8 @@ class Slider extends \Magento\Framework\View\Element\Template implements \Magent
         $this->_imageFactory = $imageFactory;
         $this->_filesystem = $context->getFilesystem();
         $this->_directory = $this->_filesystem->getDirectoryWrite(DirectoryList::MEDIA);
-
-        $this->_magicslider = $magicslider;
+        $this->backendUrl   = $backendUrl;
+        $this->_magicsliderFactory = $magicsliderFactory->create();
 
         $this->_sysCfg= (object) $context->getScopeConfig()->getValue(
             'magicslider',
@@ -62,12 +71,8 @@ class Slider extends \Magento\Framework\View\Element\Template implements \Magent
     {
         $identifier = $this->getIdentifier();
         // $store = $this->_storeManager->getStore()->getStoreId();
-        $item = $this->_magicslider->getCollection()->addFieldToSelect('config')
-                        // ->addFieldToFilter('stores',array( array('finset' => 0), array('finset' => $store)))
-                        ->addFieldToFilter('status', 1)
-                        ->addFieldToFilter('identifier', $identifier)->getFirstItem();
-                        
-        $data = json_decode($item->getConfig(), true);
+        $this->_magicslider = $this->_magicsliderFactory->load( $identifier, 'identifier');
+        $data = json_decode($this->_magicslider->getConfig(), true);
         if(!$data){
             echo '<div class="message-error error message">Identifier "'. $identifier . '" not exist.</div> ';          
             return;
@@ -91,6 +96,43 @@ class Slider extends \Magento\Framework\View\Element\Template implements \Magent
         //$data['lazy-Load'] = 'progressive';
         $this->addData($data);
         parent::_construct();
+    }
+
+    public function getAdminUrl($adminPath, $routeParams=[], $storeCode = 'default' ) 
+    {
+        $routeParams[] = [ '_nosid' => true, '_query' => ['___store' => $storeCode]];
+        return $this->backendUrl->getUrl($adminPath, $routeParams);
+    }
+
+    public function getQuickedit()
+    {
+        $slider = $this->getMagicslider();
+        $id     = $slider->getId();
+        $routeParams = [
+            'magicslider_id' => $id
+        ];
+        $editUrl = $this->getAdminUrl('magicslider/index/edit', $routeParams);
+        $quickedit = [
+            [
+                'title' => __('Slider Id is: %1', $id),
+                'url'   => $editUrl
+            ],
+            [
+                'title' => __('Slider Identifier is: %1', $slider->getIdentifier()),
+                'url'   => $editUrl
+            ],
+            [
+                'title' => __('Edit'),
+                'url'   => $editUrl
+            ]
+        ];
+
+        return $quickedit;      
+    }
+
+    public function getMagicslider()
+    {
+        return $this->_magicslider;
     }
 
     /**
