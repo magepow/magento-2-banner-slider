@@ -42,7 +42,6 @@ class Magicslider extends \Magento\Framework\Model\AbstractModel
             $resourceCollection
         );
         $this->_magicsliderCollectionFactory = $magicsliderCollectionFactory;
-        $this->_productCollectionFactory = $productCollectionFactory;
     }
 
 }
