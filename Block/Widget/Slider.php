@@ -37,6 +37,11 @@ class Slider extends \Magento\Framework\View\Element\Template implements \Magent
     protected $_imageFactory;
 
     /**
+     * @var \Magento\Backend\Model\UrlInterface
+     */
+    protected $backendUrl;
+
+    /**
      * @var \Magiccart\Magicslider\Model\MagicsliderFactory
      */
     protected $_magicsliderFactory;
@@ -115,14 +120,17 @@ class Slider extends \Magento\Framework\View\Element\Template implements \Magent
             $routeParams = [
                 'magicslider_id' => $id
             ];
-            $editUrl = $this->getAdminUrl('magicslider/index/edit', $routeParams);
-            $quickedit = [
+            $class      = (new \ReflectionClass($this))->getShortName();
+            $editUrl    = $this->getAdminUrl('magicslider/index/edit', $routeParams);
+            $moduleName = $this->getModuleName();
+            $moduleName = str_replace('_', ' > ', $moduleName);
+            $quickedit  = [
                 [
-                    'title' => __('Slider Id is: %1', $id),
+                    'title' => __('%1 > %2 Id is: %3', $moduleName, $class, $id),
                     'url'   => $editUrl
                 ],
                 [
-                    'title' => __('Slider Identifier is: %1', $slider->getIdentifier()),
+                    'title' => __('%1 > %2 Identifier is: %3', $moduleName, $class, $slider->getIdentifier()),
                     'url'   => $editUrl
                 ],
                 [
