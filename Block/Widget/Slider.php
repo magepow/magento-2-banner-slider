@@ -6,7 +6,7 @@
  * @license     http://www.magepow.com/license-agreement.html
  * @Author: DOng NGuyen<nguyen@dvn.com>
  * @@Create Date: 2017-01-05 10:40:51
- * @@Modify Date: 2020-04-26 18:09:48
+ * @@Modify Date: 2020-05-01 18:09:48
  * @@Function:
  */
 
@@ -172,17 +172,25 @@ class Slider extends \Magento\Framework\View\Element\Template implements \Magent
                 if( !file_exists($absPath) ) continue;
                 $_image->open($absPath);
                 $image['width'] = $_image->getOriginalWidth();
-                $image['height'] = $_image->getOriginalHeight();           
-                if(isset($sliderMobile[$i])){
-                    $image['url_mobile'] = $sliderMobile[$i]->getUrl();
-                    $file = self::MEDIA_PATH . $sliderMobile[$i]->getFile();
+                $image['height'] = $_image->getOriginalHeight();
+                $image = new \Magento\Framework\DataObject($image);
+                $img = isset($sliderMobile[$i]) ? $sliderMobile[$i] : '';
+                if ($img){
+                    $file = self::MEDIA_PATH . $img->getFile();
                     $absPath = $mediaPath .$file;
                     if( !file_exists($absPath) ) continue;
                     $_image->open($absPath);
-                    $image['width_mobile'] = $_image->getOriginalWidth();
-                    $image['height_mobile'] = $_image->getOriginalHeight();
+                    $width  =  $_image->getOriginalWidth();
+                    $height =  $_image->getOriginalHeight();
+                    $img->setData('width', $width);
+                    $img->setData('height', $height);
+                    $image->setData('mobile', $img);
+                    /* Make compatible with old template */
+                    $image->setData('url_mobile', $img->getUrl());
+                    $image->setData('width_mobile', $width);
+                    $image->setData('height_mobile', $height);
                 }
-                $images->addItem(new \Magento\Framework\DataObject($image));
+                $images->addItem($image);
                 $i++;
             }
             $this->setData('media_gallery_images', $images);

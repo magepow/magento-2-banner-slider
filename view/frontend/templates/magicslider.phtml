@@ -43,7 +43,14 @@ if(!count($slider)) return;
         <?php endforeach ?>
     </div>
 </div>
-
+<style type="text/css">
+    .magicslider-caption {
+        display: none;
+    }
+    .magicslider-caption.mobile.desktop{
+        display: block;
+    }
+</style>
 <script type="text/javascript">
     require([
         'jquery',
