@@ -55,7 +55,8 @@ class ContentMobile extends \Magento\Catalog\Block\Adminhtml\Product\Helper\Form
         // );
 
         $this->getUploader()->getConfig()->setUrl(
-            $this->_urlBuilder->addSessionParam()->getUrl('magicslider/index_gallery/uploadMobile')
+            // $this->_urlBuilder->addSessionParam()->getUrl('magicslider/index_gallery/uploadMobile')
+            $this->_urlBuilder->getUrl('magicslider/index_gallery/uploadMobile')
         )->setFileField(
             'image_mobile'
         )->setFilters(

@@ -168,7 +168,8 @@ class Images extends \Magento\Backend\Block\Widget\Form\Generic implements \Mage
             );
         $content->setTemplate('helper/gallery.phtml');
         $content->getUploader()->getConfig()->setUrl(
-            $this->_urlBuilder->addSessionParam()->getUrl('magicslider/index_gallery/upload')
+            // $this->_urlBuilder->addSessionParam()->getUrl('magicslider/index_gallery/upload')
+            $this->_urlBuilder->getUrl('magicslider/index_gallery/upload')
         );
         
         // $video = $this->getLayout()->createBlock(

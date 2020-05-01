@@ -167,7 +167,8 @@ class Imagemobile extends \Magento\Backend\Block\Widget\Form\Generic implements 
             );
         $contents->setTemplate('helper/gallery.phtml');
         $contents->getUploader()->getConfig()->setUrl(
-            $this->_urlBuilder->addSessionParam()->getUrl('magicslider/index_gallery/uploadMobile')
+            // $this->_urlBuilder->addSessionParam()->getUrl('magicslider/index_gallery/uploadMobile')
+            $this->_urlBuilder->getUrl('magicslider/index_gallery/uploadMobile')
         );
         
         // $video = $this->getLayout()->createBlock(

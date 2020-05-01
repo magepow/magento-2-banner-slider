@@ -55,7 +55,8 @@ class Content extends \Magento\Catalog\Block\Adminhtml\Product\Helper\Form\Galle
         // );
 
         $this->getUploader()->getConfig()->setUrl(
-            $this->_urlBuilder->addSessionParam()->getUrl('magicslider/index_gallery/upload')
+            // $this->_urlBuilder->addSessionParam()->getUrl('magicslider/index_gallery/upload')
+            $this->_urlBuilder->getUrl('magicslider/index_gallery/upload')
         )->setFileField(
             'image'
         )->setFilters(
