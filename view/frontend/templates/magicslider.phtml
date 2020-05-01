@@ -12,20 +12,34 @@ if(!count($slider)) return;
     data-lazy-load="ondemand"
     >
         <?php foreach ($slider as $image) :?>
-			<div class="item <?php echo $image->getmediaType() ?>"
+            <div class="item <?php echo $image->getmediaType() ?>"
                 <?php echo ($image['video_url']) ? 'data-video="'. $image['video_url'] .'"' : ''; ?> 
             >
-    			<a href="<?php echo isset($image['link']) ? $image['link'] : '#'; ?>">
+                <a href="<?php echo isset($image['link']) ? $image['link'] : '#'; ?>">
                     <picture>
                         <?php
-                            $img_mobile = $image->getUrlMobile();
-                            echo $img_mobile ? '<source media="(max-width: ' . $image->getWidthMobile() . 'px)" srcset=" ' . $img_mobile . ' ">' : '';     
+                            $img = $image->getMobile();
+                            echo $img ? '<source media="(max-width: ' . $img->getWidth() . 'px)" srcset=" ' . $img->getUrl() . ' ">' : '';     
                         ?>
                         <img class="img-responsive <?php /* @escapeNotVerified */ echo $this->getData('image-class') ?>" src="<?php echo $image->getUrl() ?>" alt="<?php echo __($image->getLabel()) ?>" title="<?php echo __($image->getLabel()) ?>" width="<?php echo $image->getWidth() ?>" height="<?php echo $image->getHeight() ?>" />
                     </picture>
-    			</a>
-				<?php echo isset($image['caption']) ? $image['caption'] : ''; ?>
-			</div>
+                </a>
+                <?php
+                    if ($img) {
+                        $classes = 'caption-' . uniqid();
+                        $width   = $img->getWidth();
+                        echo isset($img['caption']) ? '<div class="magicslider-caption mobile ' . $classes . '" >' . $img['caption'] . '</div>' : ''; 
+                        echo isset($image['caption']) ? '<div class="magicslider-caption desktop ' . $classes . '" >' . $image['caption'] . '</div>' : '';
+                        $style = '<style>';
+                        $style .= '@media only screen and (max-width: ' . $width . 'px){ .mobile.' .$classes . '{display:block}}';
+                        $style .= '@media only screen and (min-width: ' . $width . 'px){ .desktop.' . $classes . ' {display:block}}';
+                        $style .= '</style>';
+                        echo $style;
+                    } else {
+                        echo isset($image['caption']) ? '<div class="magicslider-caption mobile desktop" >' . $image['caption'] . '</div>' : '';
+                    }
+                ?>
+            </div>
         <?php endforeach ?>
     </div>
 </div>
