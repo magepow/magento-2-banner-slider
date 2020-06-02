@@ -75,8 +75,14 @@ class Slider extends \Magento\Framework\View\Element\Template implements \Magent
     protected function _construct()
     {
         $identifier = $this->getIdentifier();
-        // $store = $this->_storeManager->getStore()->getStoreId();
-        $this->_magicslider = $this->_magicsliderFactory->create()->load( $identifier, 'identifier');
+        $store = $this->_storeManager->getStore()->getStoreId();
+        $this->_magicslider = $this->_magicsliderFactory->create()->getCollection()->addFieldToSelect('*')
+                        ->addFieldToFilter('stores',array( array('finset' => 0), array('finset' => $store)))
+                        ->addFieldToFilter('status', 1)
+                        ->addFieldToFilter('identifier', $identifier)
+                        ->setOrder('stores', 'desc')
+                        ->setOrder('magicslider_id', 'desc')
+                        ->getFirstItem();
         if (!$this->_magicslider){
             echo '<div class="message-error error message">Identifier "'. $identifier . '" not exist.</div> ';          
             return;

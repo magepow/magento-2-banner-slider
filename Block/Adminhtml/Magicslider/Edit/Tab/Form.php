@@ -134,30 +134,30 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
 
 
         /* Check is single store mode */
-        // if (!$this->_storeManager->isSingleStoreMode()) {
-        //     $field = $fieldset->addField(
-        //         'stores',
-        //         'multiselect',
-        //         [
-        //             'name' => 'stores[]',
-        //             'label' => __('Store View'),
-        //             'title' => __('Store View'),
-        //             'required' => true,
-        //             'values' => $this->_systemStore->getStoreValuesForForm(false, true)
-        //         ]
-        //     );
-        //     $renderer = $this->getLayout()->createBlock(
-        //         'Magento\Backend\Block\Store\Switcher\Form\Renderer\Fieldset\Element'
-        //     );
-        //     $field->setRenderer($renderer);
-        // } else {
-        //     $fieldset->addField(
-        //         'stores',
-        //         'hidden',
-        //         ['name' => 'stores[]', 'value' => $this->_storeManager->getStore(true)->getId()]
-        //     );
-        //     $model->setStoreId($this->_storeManager->getStore(true)->getId());
-        // }
+        if (!$this->_storeManager->isSingleStoreMode()) {
+            $field = $fieldset->addField(
+                'stores',
+                'multiselect',
+                [
+                    'name' => 'stores[]',
+                    'label' => __('Store View'),
+                    'title' => __('Store View'),
+                    'required' => true,
+                    'values' => $this->_systemStore->getStoreValuesForForm(false, true)
+                ]
+            );
+            $renderer = $this->getLayout()->createBlock(
+                'Magento\Backend\Block\Store\Switcher\Form\Renderer\Fieldset\Element'
+            );
+            $field->setRenderer($renderer);
+        } else {
+            $fieldset->addField(
+                'stores',
+                'hidden',
+                ['name' => 'stores[]', 'value' => $this->_storeManager->getStore(true)->getId()]
+            );
+            $model->setStoreId($this->_storeManager->getStore(true)->getId());
+        }
 
 
         $fieldset->addField('status', 'select',

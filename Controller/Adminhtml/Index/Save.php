@@ -30,8 +30,26 @@ class Save extends \Magiccart\Magicslider\Controller\Adminhtml\Action
             $model = $this->_magicsliderFactory->create();
             $storeViewId = $this->getRequest()->getParam('store');
 
-            if ($id = $this->getRequest()->getParam('magicslider_id')) {
-                $model->load($id);
+            $id = $this->getRequest()->getParam('magicslider_id');
+            if ($id) $model->load($id);
+            if(count($data['stores']) == 1 ){
+                $store = is_array($data['stores']) ? reset($data['stores']) : $data['stores'];
+                $identifier = isset($data['identifier']) ? $data['identifier'] : '';
+
+                $magicslider = $this->_magicsliderFactory->create()->getCollection()->addFieldToSelect('*')
+                                ->addFieldToFilter('stores', $store);
+                if($identifier) $magicslider->addFieldToFilter('identifier', $identifier);
+                $magicslider = $magicslider->setOrder('stores', 'desc')
+                                ->setOrder('magicslider_id', 'desc')
+                                ->getFirstItem(); 
+                if($magicslider && $magicslider->getId() != $id){
+                    $this->messageManager->addError(__('identifier "%1" already exists in store "%2"!', $identifier, $store));
+                    $this->_getSession()->setFormData($data);
+                    return $resultRedirect->setPath(
+                        '*/*/new',
+                        ['_current' => TRUE]
+                    );
+                }
             }
 
             if (isset($_FILES['image']) && isset($_FILES['image']['name']) && strlen($_FILES['image']['name'])) {
