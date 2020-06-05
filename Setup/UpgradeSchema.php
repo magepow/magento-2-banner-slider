@@ -21,10 +21,11 @@ class UpgradeSchema implements UpgradeSchemaInterface
                 $installer->getTable('magiccart_magicslider'),
                 'stores',
                 [
-                    'type' => \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
-                    'length' => 255,
-                    'nullable' => false,
-                    'comment' => 'Stores',
+                    'type'      => \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+                    'length'    => 255,
+                    'nullable'  => false,
+                    'default'   => 0,
+                    'comment'   => 'Stores',
                 ]
             );
         }
