@@ -23,7 +23,7 @@
             <resource>Magiccart_Magicslider::config_magicslider</resource>
             <group id="general" translate="label" type="text" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>General</label>
-                <field id="enabled" translate="label comment" type="select" sortOrder="0"  showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="enabled" translate="label comment" type="select" sortOrder="0"  showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Enabled</label>
                     <comment>Enabled frontend</comment>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
