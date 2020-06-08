@@ -120,33 +120,7 @@ class Slider extends \Magento\Framework\View\Element\Template implements \Magent
 
     public function getQuickedit()
     {
-        $slider = $this->getMagicslider();
-        if($slider){
-            $id = $slider->getId();
-            $routeParams = [
-                'magicslider_id' => $id
-            ];
-            $class      = (new \ReflectionClass($this))->getShortName();
-            $editUrl    = $this->getAdminUrl('magicslider/index/edit', $routeParams);
-            $moduleName = $this->getModuleName();
-            $moduleName = str_replace('_', ' > ', $moduleName);
-            $quickedit  = [
-                [
-                    'title' => __('Admin Panel > %1 > %2 Id is: %3', $moduleName, $class, $id),
-                    'url'   => $editUrl
-                ],
-                [
-                    'title' => __('Admin Panel > %1 > %2 Identifier is: %3', $moduleName, $class, $slider->getIdentifier()),
-                    'url'   => $editUrl
-                ],
-                [
-                    'title' => __('Edit'),
-                    'url'   => $editUrl
-                ]
-            ];
-        }
-
-        return $quickedit;      
+        return;      
     }
 
     public function getMagicslider()
