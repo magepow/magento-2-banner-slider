@@ -132,11 +132,11 @@ class Slider extends \Magento\Framework\View\Element\Template implements \Magent
             $moduleName = str_replace('_', ' > ', $moduleName);
             $quickedit  = [
                 [
-                    'title' => __('%1 > %2 Id is: %3', $moduleName, $class, $id),
+                    'title' => __('Admin Panel > %1 > %2 Id is: %3', $moduleName, $class, $id),
                     'url'   => $editUrl
                 ],
                 [
-                    'title' => __('%1 > %2 Identifier is: %3', $moduleName, $class, $slider->getIdentifier()),
+                    'title' => __('Admin Panel > %1 > %2 Identifier is: %3', $moduleName, $class, $slider->getIdentifier()),
                     'url'   => $editUrl
                 ],
                 [
