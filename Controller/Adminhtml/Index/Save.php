@@ -6,7 +6,7 @@
  * @license     http://www.magiccart.net/license-agreement.html
  * @Author: DOng NGuyen<nguyen@dvn.com>
  * @@Create Date: 2016-01-05 10:40:51
- * @@Modify Date: 2016-04-22 16:53:38
+ * @@Modify Date: 2020-06-10 16:53:38
  * @@Function:
  */
 
@@ -31,17 +31,15 @@ class Save extends \Magiccart\Magicslider\Controller\Adminhtml\Action
             $storeViewId = $this->getRequest()->getParam('store');
 
             $id = $this->getRequest()->getParam('magicslider_id');
-            if ($id) $model->load($id);
-            if(count($data['stores']) == 1 ){
+            if ($id){
+                $magicslider = $model->load($id);
+            }
+            if (!$magicslider->getId() && count($data['stores']) == 1){
                 $store = is_array($data['stores']) ? reset($data['stores']) : $data['stores'];
                 $identifier = isset($data['identifier']) ? $data['identifier'] : '';
-
-                $magicslider = $this->_magicsliderFactory->create()->getCollection()->addFieldToSelect('*')
-                                ->addFieldToFilter('stores', $store);
+                $magicslider = $this->_magicsliderFactory->create()->getCollection()->addFieldToSelect('*')->addFieldToFilter('stores', $store);
                 if($identifier) $magicslider->addFieldToFilter('identifier', $identifier);
-                $magicslider = $magicslider->setOrder('stores', 'desc')
-                                ->setOrder('magicslider_id', 'desc')
-                                ->getFirstItem(); 
+                $magicslider = $magicslider->setOrder('stores', 'desc')->setOrder('magicslider_id', 'desc')->getFirstItem(); 
                 if($magicslider && $magicslider->getId() != $id){
                     $this->messageManager->addError(__('identifier "%1" already exists in store "%2"!', $identifier, $store));
                     $this->_getSession()->setFormData($data);
