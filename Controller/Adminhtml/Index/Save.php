@@ -31,10 +31,8 @@ class Save extends \Magiccart\Magicslider\Controller\Adminhtml\Action
             $storeViewId = $this->getRequest()->getParam('store');
 
             $id = $this->getRequest()->getParam('magicslider_id');
-            if ($id){
-                $magicslider = $model->load($id);
-            }
-            if (!$magicslider->getId() && count($data['stores']) == 1){
+            if ($id) $model->load($id);
+            if (!$model->getId() && count($data['stores']) == 1){
                 $store = is_array($data['stores']) ? reset($data['stores']) : $data['stores'];
                 $identifier = isset($data['identifier']) ? $data['identifier'] : '';
                 $magicslider = $this->_magicsliderFactory->create()->getCollection()->addFieldToSelect('*')->addFieldToFilter('stores', $store);
