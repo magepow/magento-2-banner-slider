@@ -42,7 +42,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
         \Magento\Backend\Block\Template\Context $context,
         \Magento\Backend\Helper\Data $backendHelper,
         \Magento\Review\Helper\Data $reviewData,
-        \Magento\Catalog\Model\Product\Attribute\Source\Status $status,
+        \Magiccart\Magicslider\Model\Status $status,
         \Magiccart\Magicslider\Model\ResourceModel\Magicslider\CollectionFactory $magicsliderCollectionFactory,
     
         array $data = []
