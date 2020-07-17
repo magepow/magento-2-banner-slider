@@ -1,6 +1,9 @@
 {
   "name": "magiccart/magicslider",
   "description": "Banner slider flexibly to any page on live store.",
+  "require": {
+    "magiccart/community" : ">=1.0"
+  },
   "type": "magento2-module",
   "license": [
     "OSL-3.0",
