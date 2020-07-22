@@ -166,6 +166,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
                 'title' => __('Status'),
                 'name' => 'status',
                 'options' => Status::getOptionArray(),
+                'value' => 1,
             ]
         );
 

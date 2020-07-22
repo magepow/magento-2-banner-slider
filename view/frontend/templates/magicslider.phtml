@@ -1,6 +1,6 @@
 <?php
 if(!$this->getStatus()) return;
-$selector = 'alo-content-'.rand(0,999999999);
+$selector = 'alo-content-'.uniqid();
 $slider = $this->getSlider();
 if(!count($slider)) return;
 ?>
@@ -55,7 +55,6 @@ if(!count($slider)) return;
     require([
         'jquery',
         'magiccart/slick',
-        'alothemes',
         ], function($, slick){
             var el  = $('.<?php echo $selector ?> .magicslider');
             if($('body').hasClass('rtl')){
