@@ -1,7 +1,88 @@
-.magicslider >.item:nth-child(n+2), .magicslider >.item .figcaption{display: none;}
-.magicslider >.item.slick-slide, .magicslider >.item.slick-slide .figcaption{display: block;}
-.magicslider{text-align: center; display:block}
-.external-video:after {background: rgba(0, 0, 0, 0) url("../images/gallery-sprite.png") repeat scroll right bottom;bottom: 0;content: "";height: 100px;left: 0;margin: auto;position: absolute;right: 0;top: 12px;width: 100px;}
-.external-video.embed:after {display: none;}
-.magicslider-caption {display: none;}
-.magicslider-caption.mobile.desktop{display: block;}
+& when (@media-common = true) {
+	img {
+		display: block;
+		max-width: 100%;
+		height: auto;
+	}
+	.magicslider >.item:nth-child(n+2), .magicslider >.item .figcaption{display: none;}
+	.magicslider >.item.slick-slide, .magicslider >.item.slick-slide .figcaption{display: block;}
+	.magicslider{text-align: center; display:block}
+	.external-video:after {background: rgba(0, 0, 0, 0) url("../images/gallery-sprite.png") repeat scroll right bottom;bottom: 0;content: "";height: 100px;left: 0;margin: auto;position: absolute;right: 0;top: 12px;width: 100px;}
+	.external-video.embed:after {display: none;}
+	.magicslider-caption {display: none;}
+	.magicslider-caption.mobile.desktop{display: block;}
+	.slick-prev,
+	.slick-next {
+		transition: all .3s ease-in-out;
+		z-index: 3;
+		opacity: 0;
+		visibility: hidden;
+		&:before {
+			font-family: 'luma-icons';
+			color: #333;
+		}
+	}
+	.slick-prev:before {
+		content: '\e617';
+	}
+	.slick-next:before {
+		content: '\e608';
+	}
+	.slick-slider {
+		&:hover {
+			.slick-prev,
+			.slick-next {
+				opacity: 1;
+				visibility: visible;
+			}
+			.slick-prev {
+				left: 15px;
+			}
+			.slick-next {
+				right: 15px;
+			}
+		}
+	}
+	button:not(.primary) {
+		box-shadow: none;
+	}
+	button:not(.primary):active {
+		box-shadow:none;
+	}
+	button:hover,
+	button:focus,
+	button:active {
+		border: none;
+	}
+	.slick-dots {
+		bottom: 20px;
+		text-align: right;
+		right: 10px;
+		li {
+			button {
+				background: #ccc;
+				width: 8px;
+				height: 8px;
+				padding: 0;
+				border-radius: 50%;
+				&:before {
+					width: 8px;
+					height: 8px;
+					border-radius: 50%;
+				}
+			}
+			&:hover,
+			&.slick-active {
+				button {
+					background: #666;
+				}
+			}
+		}
+	}
+	@media only screen and (max-width: 480px) {
+		.slick-dots {
+			bottom: 10px;
+			right: 3px;
+		}
+	}
+}
