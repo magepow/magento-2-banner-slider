@@ -9,11 +9,11 @@
 ### ✓ Install Magiccart Magicslider via composer (recommend)
 Run the following command in Magento 2 root folder:
 
-`composer require magiccart/magicslider`
-
-`php bin/magento setup:upgrade`
-
-`php bin/magento setup:static-content:deploy -f`
+```
+composer require magiccart/magicslider
+php bin/magento setup:upgrade
+php bin/magento setup:static-content:deploy -f
+```
 
 ## Highlight Features
 - Add a banner slider flexibly to any page on live store, such as homepage, category page, product page, CMS page…
