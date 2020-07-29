@@ -28,6 +28,12 @@ Run the following command in Magento 2 root folder:
 ## Magiccart Magicslider user guide
 [USE GUIDE](https://docs.alothemes.com/m2/theme/gecko/#sub65)
 
+## Donation
+
+If this project help you reduce time to develop, you can give me a cup of coffee :) 
+
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/paypalme/alopay)
+
 **Free Extensions List**
 
 * [Magento 2 Recent Sales Notification](https://magepow.com/magento-2-recent-sales-notification.html)
