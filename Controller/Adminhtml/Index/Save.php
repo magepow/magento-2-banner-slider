@@ -17,7 +17,7 @@ use Magento\Framework\App\Filesystem\DirectoryList;
 class Save extends \Magiccart\Magicslider\Controller\Adminhtml\Action
 {
     
-    private $_mediaDir = 'magiccart/magicslider/';
+    private $_mediaDir = 'magiccart/magicslider';
 
     /**
      * @var \Magento\Framework\View\Result\PageFactory
