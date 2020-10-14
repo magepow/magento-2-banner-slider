@@ -63,7 +63,7 @@ If this project help you reduce time to develop, you can give me a cup of coffee
 
 **Free Extensions List**
 
-* [Magento 2 Recent Sales Notification](https://alothemes.com/magento-2-recent-sales-notification.html)
+* [Magento 2 Recent Sales Notification](https://alothemes.com/magento-2-recent-order-notification.html)
 
 * [Magento Categories Extension](https://alothemes.com/magento-categories-extension.html)
 
