@@ -16,8 +16,6 @@ namespace Magiccart\Magicslider\Block\Adminhtml\Magicslider\Helper\Form\Gallery;
 use Magento\Backend\Block\Media\Uploader;
 use Magento\Framework\View\Element\AbstractBlock;
 use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\Framework\App\ObjectManager;
-use Magento\Backend\Block\DataProviders\ImageUploadConfig as ImageUploadConfigDataProvider;
 
 class Content extends \Magento\Catalog\Block\Adminhtml\Product\Helper\Form\Gallery\Content
 {
@@ -37,21 +35,11 @@ class Content extends \Magento\Catalog\Block\Adminhtml\Product\Helper\Form\Galle
         \Magento\Backend\Block\Template\Context $context,
         \Magento\Framework\Json\EncoderInterface $jsonEncoder,
         \Magiccart\Magicslider\Model\Magicslider\Media\Config $mediaConfig,
-        ImageUploadConfigDataProvider $imageUploadConfigDataProvider = null,
         array $data = []
     ) {
         $this->_jsonEncoder = $jsonEncoder;
         $this->_mediaConfig = $mediaConfig;
         parent::__construct($context, $jsonEncoder, $mediaConfig, $data);
-        try {
-            if (class_exists(ImageUploadConfigDataProvider::class)) {
-                $this->imageUploadConfigDataProvider = $imageUploadConfigDataProvider
-            ?: ObjectManager::getInstance()->get(ImageUploadConfigDataProvider::class);
-            } elseif (class_exists(ImageUploadConfigDataProvider::class)) {
-            
-                $this->imageUploadConfigDataProvider = ObjectManager::getInstance()->get(ImageUploadConfigDataProvider::class);
-            }
-        } catch (\Exception $e) {}
     }
 
     protected function _prepareLayout()
@@ -59,14 +47,8 @@ class Content extends \Magento\Catalog\Block\Adminhtml\Product\Helper\Form\Galle
         $this->addChild(
             'uploader',
             \Magento\Backend\Block\Media\Uploader::class,
-            ['image_upload_config_data' => $this->imageUploadConfigDataProvider]
+            ['image_upload_config_data' => $this]
         );
-
-        // $this->addChild(
-        //     'uploader',
-        //     \Magento\Backend\Block\Media\Uploader::class,
-        //     ['image_upload_config_data' => $this]
-        // );
 
         $this->getChildBlock('uploader')->setTemplate('Magiccart_Magicslider::media/uploader.phtml');
         // $this->addChild(
