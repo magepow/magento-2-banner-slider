@@ -105,7 +105,7 @@ class Save extends \Magiccart\Magicslider\Controller\Adminhtml\Action
                     $media_gallery = $data['product']['media_gallery'];
                     $images = $media_gallery['images'];
                     foreach ($images as $key => $image) {
-                        if($image['removed']){
+                        if(isset($image['removed']) && $image['removed']){
                             if ($_file->isExists($mediaRootDir . $image['file']))  {
 
                                 $_file->deleteFile($mediaRootDir . $image['file']);    
@@ -120,7 +120,7 @@ class Save extends \Magiccart\Magicslider\Controller\Adminhtml\Action
                     $media_gallery_mobile = $data['product']['media_gallery_mobile'];
                     $images = $media_gallery_mobile['images'];
                     foreach ($images as $key => $image) {
-                        if($image['removed']){
+                        if(isset($image['removed']) && $image['removed']){
                             if ($_file->isExists($mediaRootDir . $image['file']))  {
 
                                 $_file->deleteFile($mediaRootDir . $image['file']);    
