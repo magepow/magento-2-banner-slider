@@ -33,11 +33,6 @@ class Upload extends \Magento\Catalog\Controller\Adminhtml\Product\Gallery\Uploa
             $config = $this->_objectManager->get('Magiccart\Magicslider\Model\Magicslider\Media\Config');
             $result = $uploader->save($mediaDirectory->getAbsolutePath($config->getBaseTmpMediaPath()));
 
-            $this->_eventManager->dispatch(
-                'catalog_product_gallery_upload_image_after',
-                ['result' => $result, 'action' => $this]
-            );
-
             unset($result['tmp_name']);
             unset($result['path']);
 
