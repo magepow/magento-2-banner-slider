@@ -1,5 +1,5 @@
 ## Magento 2 Magicslider Extention (Magento 2 Banner Slider)
-Make your store wonderful with magnificent slide effects with **Magento 2 Magicslider Extention (Banner Slider)** of Alothemes.
+Make your store wonderful with magnificent slide effects with **Magento 2 Magicslider Extention (commonly known as Banner Slider)** of Alothemes.
 
 ### Description
 
