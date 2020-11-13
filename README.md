@@ -1,21 +1,21 @@
-## Magento 2 Extention Magicslider
-Make your store wonderful with magnificent slide effects with **Magicslider Extention Magento 2** of Alothemes.
+## Magento 2 Magicslider Extention (Magento 2 Banner Slider)
+Make your store wonderful with magnificent slide effects with **Magento 2 Magicslider Extention (Banner Slider)** of Alothemes.
 
 ### Description
 
-**Magicslider extension** allows you show a slider of banner to help you highlight your promotion, hot news or any target information. Moreover, this extension also make your website more attractive and looks beautiful.
+**Banner Slider Extension** allows you show a slider of banner to help you highlight your promotion, hot news or any target information. Moreover, this extension also make your website more attractive and looks beautiful.
 
 Magicslider is compatible with all Magento versions, from Magento 1.x to Magento 2.x. With constant updates, you can be confident that your slideshows will stay perfect.
 
-No coding required, you can use Magicslider extension almost anywhere on your Magento site. You can also create different slideshows for each page or block.
+No coding required, you can use Banner Slider extension almost anywhere on your Magento site. You can also create different slideshows for each page or block.
 
 ### Look in frontend
 
-![Magento 2 Extention Magicslider](https://github.com/magiccart/magento2-magicslider/blob/master/media/magicslider-1.gif)
+![Magento 2 Banner Slider Extention](https://github.com/magiccart/magento2-magicslider/blob/master/media/magicslider-1.gif)
 
 ### Advantages
 
-Show your online store gracefully. Your website looks boring, make it look more interesting with attractive slideshows. Magicsliders will make your website more alive than ever.
+Show your online store gracefully. Your website looks boring, make it look more interesting with attractive slideshows. Banner Sliders will make your website more alive than ever.
 
 Attract customers' attention with gorgeous image slideshow. People always pay attention to the moving images. That's why slideshows are perfect for displaying your top promotions and announcements. Use Magicslider to easily place your slide show wherever you want.
 
@@ -41,8 +41,8 @@ Attract customers' attention with gorgeous image slideshow. People always pay at
 
 <img src="https://github.com/magiccart/magento2-magicslider/blob/master/media/magicslider-4.gif" width="480" alt="Magento 2 Extention Magicslider" /> (The interface on the mobile phone)
 
-## How to install Magicslider Extension
-### ✓ Install Magiccart Magicslider via composer (recommend)
+## How to install Banner Slider Extension
+### ✓ Install Magiccart Banner Slider via composer (recommend)
 Run the following command in Magento 2 root folder:
 
 ```
@@ -52,7 +52,7 @@ php bin/magento setup:static-content:deploy -f
 ```
 
 
-## Magiccart Magicslider user guide
+## Magiccart Banner Slider user guide
 [USE GUIDE](https://docs.alothemes.com/m2/theme/gecko/#sub65)
 
 ## Donation
