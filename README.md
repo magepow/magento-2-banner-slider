@@ -1,9 +1,9 @@
-## Magento 2 Magicslider Extention (Magento 2 Banner Slider)
+## Magento 2 Banner Slider Extention (Magento 2 Magicslider)
 Make your store wonderful with magnificent slide effects with **Magento 2 Magicslider Extention (commonly known as Banner Slider)** of Alothemes.
 
 ### Description
 
-**Banner Slider Extension** allows you show a slider of banner to help you highlight your promotion, hot news or any target information. Moreover, this extension also make your website more attractive and looks beautiful.
+**Magento 2 Banner Slider Extension** allows you show a slider of banner to help you highlight your promotion, hot news or any target information. Moreover, this extension also make your website more attractive and looks beautiful.
 
 Magicslider is compatible with all Magento versions, from Magento 1.x to Magento 2.x. With constant updates, you can be confident that your slideshows will stay perfect.
 
@@ -41,7 +41,7 @@ Attract customers' attention with gorgeous image slideshow. People always pay at
 
 <img src="https://github.com/magiccart/magento2-magicslider/blob/master/media/magicslider-4.gif" width="480" alt="Magento 2 Extention Magicslider" /> (The interface on the mobile phone)
 
-## How to install Banner Slider Extension
+## How to install Magento 2 Banner Slider Extension
 ### ✓ Install Magiccart Banner Slider via composer (recommend)
 Run the following command in Magento 2 root folder:
 
