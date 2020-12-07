@@ -32,7 +32,7 @@ if(!count($slider)) return;
                         echo isset($image['caption']) ? '<div class="magicslider-caption desktop ' . $classes . '" >' . $image['caption'] . '</div>' : '';
                         $style = '<style>';
                         $style .= '@media only screen and (max-width: ' . $width . 'px){ .mobile.' .$classes . '{display:block}}';
-                        $style .= '@media only screen and (min-width: ' . $width . 'px){ .desktop.' . $classes . ' {display:block}}';
+                        $style .= '@media only screen and (min-width: ' . ++$width . 'px){ .desktop.' . $classes . ' {display:block}}';
                         $style .= '</style>';
                         echo $style;
                     } else {
