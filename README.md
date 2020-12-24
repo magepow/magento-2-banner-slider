@@ -9,6 +9,10 @@ Magicslider is compatible with all Magento versions, from Magento 1.x to Magento
 
 No coding required, you can use Banner Slider extension almost anywhere on your Magento site. You can also create different slideshows for each page or block.
 
+[![Latest Stable Version](https://poser.pugx.org/magiccart/magicslider/v/stable)](https://packagist.org/packages/magiccart/magicslider)
+[![Total Downloads](https://poser.pugx.org/magiccart/magicslider/downloads)](https://packagist.org/packages/magiccart/magicslider)
+[![Daily Downloads](https://poser.pugx.org/magiccart/magicslider/d/daily)](https://packagist.org/packages/magiccart/magicslider)
+
 ### Look in frontend
 
 ![Magento 2 Banner Slider Extention](https://github.com/magiccart/magento2-magicslider/blob/master/media/magicslider-1.gif)
@@ -125,6 +129,3 @@ If this project help you reduce time to develop, you can give me a cup of coffee
 * [Customization Service](https://alothemes.com/customization-service.html)
 
 * [Hire Magento Developer](https://alothemes.com/hire-magento-developer.html)
-
-[![Latest Stable Version](https://poser.pugx.org/magiccart/magicslider/v/stable)](https://packagist.org/packages/magiccart/magicslider)
-[![Total Downloads](https://poser.pugx.org/magiccart/magicslider/downloads)](https://packagist.org/packages/magiccart/magicslider)
