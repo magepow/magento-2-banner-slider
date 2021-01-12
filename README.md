@@ -1,9 +1,26 @@
-## Magento 2 Banner Slider Extention ( Magento 2 Magicslider )
-Make your store wonderful with magnificent slide effects with **Magento 2 Magicslider Extention (commonly known as Banner Slider)** of Alothemes.
+## Magento 2 Banner Slider Extension ( Magento 2 Magicslider )
+
+Make your store wonderful with magnificent slide effects with Magento 2 Magicslider Extension (commonly known as Banner Slider)
 
 ### Description
 
-**Magento 2 Banner Slider Extension** allows you show a slider of banner to help you highlight your promotion, hot news or any target information. Moreover, this extension also make your website more attractive and looks beautiful.
+**Magento 2 Banner Slider Extension** allows you to show a slider of banners to help you highlight your promotion, hot news or any target information. 
+
+Moreover, this extension also makes your website more attractive and looks beautiful.
+- Shorten website construction time
+
+- Increase website performance, improve customer experience
+
+- Banner to introduce products
+
+- Banner to introduce business
+
+- Increase CTR for marketing campaigns: promotions, gifts, events
+
+- Effective customer navigation tools
+
+Magicslider is compatible with all Magento versions, from Magento 1.x to Magento 2.x. With constant updates, you can be confident that your slideshows will stay perfect.
+
 
 Magicslider is compatible with all Magento versions, from Magento 1.x to Magento 2.x. With constant updates, you can be confident that your slideshows will stay perfect.
 
@@ -41,9 +58,29 @@ Attract customers' attention with gorgeous image slideshow. People always pay at
 
 - Responsive design allows customers to shop anywhere, on any device. Allow uploading of a particular image on mobile. Images will be uploaded separately for computers and mobile phones to make your online store look great on any mobile device.
 
-<img src="https://github.com/magiccart/magento2-magicslider/blob/master/media/magicslider-6.png" width="480" alt="Magento 2 Extention Magicslider" /> (The interface on the computer)
+<img src="https://github.com/magiccart/magento2-magicslider/blob/master/media/magicslider-6.png" width="480" alt="Magento 2 Extention Magicslider" />
+(The interface on the computer)
 
-<img src="https://github.com/magiccart/magento2-magicslider/blob/master/media/magicslider-4.gif" width="480" alt="Magento 2 Extention Magicslider" /> (The interface on the mobile phone)
+<img src="https://github.com/magiccart/magento2-magicslider/blob/master/media/magicslider-4.gif" width="480" alt="Magento 2 Extention Magicslider" /> 
+(The interface on the mobile phone)
+
+### Some precautions when using banner slider
+
+- Banner switching modes automatically and manually
+
+Sliders can automatically slide or the user can click/swipe the screen. 
+
+You should turn on both modes to optimize the best customer experience.
+
+- Shows the number of banners 
+
+Using too many inappropriate banners on the same page will make your website load longer. This is one of the reasons why customers leave your store.
+
+It is important to keep in mind that using the right number of images/videos to suit your store's needs. Your website will be cleaner and more professional.
+
+- Customization makes it easy to navigate customers
+
+Magento 2 Banner Slider extension allows you to insert links, text to navigate customers to your landing page. Be optimized for engaging and easy-to-access slides.
 
 ## How to install Magento 2 Banner Slider Extension
 ### ✓ Install Magiccart Banner Slider via composer (recommend)
