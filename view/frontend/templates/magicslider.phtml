@@ -4,6 +4,7 @@ $selector = 'alo-content-'.uniqid();
 $slider = $this->getSlider();
 if(!count($slider)) return;
 ?>
+<style type="text/css">.magicslider-caption {display: none;} .magicslider-caption.mobile.desktop{display: block;}</style>
 <div class="<?php echo $selector ?>">
     <div class="magicslider grid-slider <?php echo $this->getData('class')?>"
     <?php foreach ($this->getFrontendCfg() as $opt) :?>
@@ -43,5 +44,12 @@ if(!count($slider)) return;
         <?php endforeach ?>
     </div>
 </div>
-<style type="text/css">.magicslider-caption {display: none;} .magicslider-caption.mobile.desktop{display: block;}</style>
-<script type="text/x-magento-init">{".<?php echo $selector ?>": {"gridSlider": {}}}</script>
+<script type="text/javascript">
+    require([
+        'jquery',
+        'gridSlider',
+        ], function($, gridSlider){
+            var el  = $('.<?php echo $selector ?>');
+            if(el.length) el.gridSlider();
+    });
+</script>
