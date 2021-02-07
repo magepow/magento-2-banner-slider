@@ -163,7 +163,7 @@ class Slider extends \Magento\Framework\View\Element\Template implements \Magent
             $images = $this->_collectionFactory->create();
             $i=0;
             foreach ($this->getMediaGallery('images') as $image) {
-                if ((isset($image['disabled']) && $image['disabled'])
+                if ((isset($image['disabled']) && $image['disabled'] || !isset($image['file']))
                 ) {
                     continue;
                 }
