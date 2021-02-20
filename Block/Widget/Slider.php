@@ -108,6 +108,7 @@ class Slider extends \Magento\Framework\View\Element\Template implements \Magent
         // $data['swipe-To-Slide'] = 'true';
         $data['vertical-Swiping'] = $data['vertical'];
         $data['slide'] = 1;
+        if(!isset($data['rows'])  || $data['rows'] == 1 ) $data['rows'] = 0;
         //$data['lazy-Load'] = 'progressive';
         $this->addData($data);
         parent::_construct();
