@@ -174,7 +174,7 @@ class Config extends \Magento\Backend\Block\Widget\Form\Generic implements \Mage
                 'title' => __('Rows'),
                 'name' => 'rows',
                 'options' => $this->_row->toOptionArray(),
-                'value' => '1',
+                'value' => '0',
             ]
         );
 

@@ -17,6 +17,7 @@ class Row implements \Magento\Framework\Option\ArrayInterface
     public function toOptionArray()
     {
         return [
+            '0'=>   __('1 row(s) without warp /slider'),
             '1'=>   __('1 row(s) /slider'),
             '2'=>   __('2 row(s) /slider'),
             '3'=>   __('3 row(s) /slider'),
