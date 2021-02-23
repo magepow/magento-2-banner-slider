@@ -2,6 +2,8 @@
 if(!$this->getStatus()) return;
 $selector = 'alo-content-'.uniqid();
 $slider = $this->getSlider();
+$notLazyload = (int) $this->getData('exclude_lazyload_visible');
+if($notLazyload) $notLazyload = (int) $this->getData('visible');
 if(!count($slider)) return;
 ?>
 <style type="text/css">.magicslider-caption {display: none;} .magicslider-caption.mobile.desktop{display: block;}</style>
@@ -16,13 +18,20 @@ if(!count($slider)) return;
             <div class="item <?php echo $image->getmediaType() ?>"
                 <?php echo ($image['video_url']) ? 'data-video="'. $image['video_url'] .'"' : ''; ?> 
             >
+                <?php
+                    $classImage = $this->getData('image-class');
+                    if($notLazyload){
+                        $classImage .= ' loaded';
+                        $notLazyload--;
+                    }
+                ?> 
                 <a href="<?php echo isset($image['link']) ? $image['link'] : '#'; ?>">
                     <picture>
                         <?php
                             $img = $image->getMobile();
                             echo $img ? '<source media="(max-width: ' . $img->getWidth() . 'px)" srcset=" ' . $img->getUrl() . ' ">' : '';     
                         ?>
-                        <img class="img-responsive <?php /* @escapeNotVerified */ echo $this->getData('image-class') ?>" src="<?php echo $image->getUrl() ?>" alt="<?php echo __($image->getLabel()) ?>" title="<?php echo __($image->getLabel()) ?>" width="<?php echo $image->getWidth() ?>" height="<?php echo $image->getHeight() ?>" />
+                        <img class="img-responsive <?php /* @escapeNotVerified */ echo $classImage ?>" src="<?php echo $image->getUrl() ?>" alt="<?php echo __($image->getLabel()) ?>" title="<?php echo __($image->getLabel()) ?>" width="<?php echo $image->getWidth() ?>" height="<?php echo $image->getHeight() ?>" />
                     </picture>
                 </a>
                 <?php

@@ -122,13 +122,26 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             );
         }
 
+        $fieldset->addField(
+            'exclude_lazyload_visible',
+            'select',
+            [
+                'label' => __('Load visible images'),
+                'title' => __('Load visible images'),
+                'name' => 'exclude_lazyload_visible',
+                'options' => ['0' => __('No'), '1' => __('Yes')],
+                'value' => 0,
+                'after_element_html' => '<small>Not use lazyload with Images Visible. This feature require module a <a href="https://magepow.com/magento2-speed-optimizer.html?refer=magicslider">Magepow_SpeedOptimizer</a></small>',
+            ]
+        );
+
         $fieldset->addField('image-class', 'text',
             [
                 'label' => __('Image class'),
                 'title' => __('Image class'),
                 'name'  => 'image-class',
                 'required' => false,
-                'value' => 'loaded',
+                // 'value' => 'loaded',
             ]
         );
 
