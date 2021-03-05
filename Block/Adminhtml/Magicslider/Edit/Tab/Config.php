@@ -146,8 +146,8 @@ class Config extends \Magento\Backend\Block\Widget\Form\Generic implements \Mage
             'adaptive-height', 
             'select',
             [
-                'label' => __('Adapts Height'),
-                'title' => __('Adapts Height'),
+                'label' => __('Adaptive Height'),
+                'title' => __('Adaptive Height'),
                 'name' => 'adaptive-height',
                 'options' => $this->_trueFalse,
                 'value' => 'false',
