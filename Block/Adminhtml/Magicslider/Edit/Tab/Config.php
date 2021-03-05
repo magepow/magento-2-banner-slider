@@ -188,7 +188,7 @@ class Config extends \Magento\Backend\Block\Widget\Form\Generic implements \Mage
                 'name'  => 'speed',
                 'required' => true,
                 'class' => 'validate-zero-or-greater',
-                'value' => 300,
+                'value' => 600,
             ]
         );
 
@@ -199,7 +199,7 @@ class Config extends \Magento\Backend\Block\Widget\Form\Generic implements \Mage
                 'name'  => 'autoplay-Speed',
                 'required' => true,
                 'class' => 'validate-zero-or-greater',
-                'value' => 3000,
+                'value' => 6000,
             ]
         );
 
