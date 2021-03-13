@@ -266,7 +266,7 @@ class Slider extends \Magento\Framework\View\Element\Template implements \Magent
 
     public function getSlideOptions()
     {
-        return array('autoplay', 'arrows', 'autoplay-Speed', 'speed', 'dots', 'infinite', 'padding', 'vertical', 'vertical-Swiping', 'responsive', 'rows', 'slides-To-Show');
+        return array('autoplay', 'arrows', 'autoplay-Speed', 'speed', 'dots', 'fade', 'infinite', 'padding', 'vertical', 'vertical-Swiping', 'responsive', 'rows', 'slides-To-Show');
     }
 
     public function getFrontendCfg()
