@@ -2,9 +2,10 @@
 if(!$this->getStatus()) return;
 $selector = 'alo-content-'.uniqid();
 $slider = $this->getSlider();
+if(!count($slider)) return;
 $notLazyload = (int) $this->getData('exclude_lazyload_visible');
 if($notLazyload) $notLazyload = (int) $this->getData('visible');
-if(!count($slider)) return;
+$imageAsBackground = (int) $this->getData('background-image');
 ?>
 <style type="text/css">.magicslider-caption {display: none;} .magicslider-caption.mobile.desktop{display: block;}</style>
 <div class="<?php echo $selector ?>">
@@ -23,6 +24,9 @@ if(!count($slider)) return;
                     if($notLazyload){
                         $classImage .= ' loaded';
                         $notLazyload--;
+                    }
+                    if($imageAsBackground){
+                        $classImage .= ' background-image';
                     }
                 ?> 
                 <a href="<?php echo isset($image['link']) ? $image['link'] : '#'; ?>">

@@ -135,6 +135,19 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             ]
         );
 
+        $fieldset->addField(
+            'background-image',
+            'select',
+            [
+                'label' => __('Show image as background'),
+                'title' => __('Show image as background'),
+                'name' => 'background-image',
+                'options' => ['0' => __('No'), '1' => __('Yes')],
+                'value' => 0,
+                'after_element_html' => '<small>This feature require module a <a href="https://magepow.com/magento2-speed-optimizer.html?refer=magicslider">Magepow_SpeedOptimizer</a></small>',
+            ]
+        );
+
         $fieldset->addField('image-class', 'text',
             [
                 'label' => __('Image class'),
