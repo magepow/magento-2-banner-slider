@@ -97,10 +97,10 @@ class Slider extends \Magento\Framework\View\Element\Template implements \Magent
         $total = count($breakpoints);
         $responsive = '[';
         foreach ($breakpoints as $size => $screen) {
-            if(isset($data[$screen])){
-                $responsive .= '{"breakpoint": '.$size.', "settings": {"slidesToShow": '.$data[$screen].'}}';
-            }
-            if($total-- > 1) $responsive .= ', ';
+            $total--;
+            if(!isset($data[$screen])) continue;
+            $responsive .= '{"breakpoint": '.$size.', "settings": {"slidesToShow": '.$data[$screen].'}}';
+            if($total > 0) $responsive .= ', ';
         }
         $responsive .= ']';
         $data['responsive'] = $responsive;
