@@ -37,7 +37,7 @@ class Save extends \Magiccart\Magicslider\Controller\Adminhtml\Action
                 $identifier = isset($data['identifier']) ? $data['identifier'] : '';
                 $magicslider = $this->_magicsliderFactory->create()->getCollection()->addFieldToSelect('*')->addFieldToFilter('stores', $store);
                 if($identifier) $magicslider->addFieldToFilter('identifier', $identifier);
-                $magicslider = $magicslider->setOrder('stores', 'desc')->setOrder('magicslider_id', 'desc')->getFirstItem(); 
+                $magicslider = $magicslider->setOrder('stores', 'desc')->setOrder('magicslider_id', 'desc')->setPageSize(1)->getFirstItem(); 
                 if($magicslider && $magicslider->getId() != $id){
                     $this->messageManager->addError(__('identifier "%1" already exists in store "%2"!', $identifier, $store));
                     $this->_getSession()->setFormData($data);
