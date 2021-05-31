@@ -83,6 +83,7 @@ class Slider extends \Magento\Framework\View\Element\Template implements \Magent
                         ->addFieldToFilter('identifier', $identifier)
                         ->setOrder('stores', 'desc')
                         ->setOrder('magicslider_id', 'desc')
+                        ->setPageSize(1)
                         ->getFirstItem();
         if (!$this->_magicslider){
             echo '<div class="message-error error message">Identifier "'. $identifier . '" not exist.</div> ';          
