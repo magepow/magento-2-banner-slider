@@ -58,11 +58,8 @@ $imageAsBackground = (int) $this->getData('background-image');
     </div>
 </div>
 <script type="text/javascript">
-    require([
-        'jquery',
-        'gridSlider',
-        ], function($, gridSlider){
-            var el  = $('.<?php echo $selector ?>');
-            if(el.length) el.gridSlider();
+    require(['jquery','gridSlider'], function($, gridSlider){
+        var el  = $('.<?php echo $selector ?>');
+        if(el.length) el.gridSlider();
     });
 </script>
