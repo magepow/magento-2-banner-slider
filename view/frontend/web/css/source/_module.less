@@ -126,7 +126,12 @@
 		}
 
 	}
-
+	.grid-slider {
+		opacity: 0;
+	}
+	.grid-init .grid-slider, .grid-slider.grid-init, .grid-slider.slick-initialized {
+		opacity: 1;
+	}
 	@media only screen and (max-width: 480px) {
 		.magicslider {
 			.slick-dots {
