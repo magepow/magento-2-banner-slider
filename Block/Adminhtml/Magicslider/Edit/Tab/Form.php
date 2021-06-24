@@ -130,7 +130,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
                 'title' => __('Load visible images'),
                 'name' => 'exclude_lazyload_visible',
                 'options' => ['0' => __('No'), '1' => __('Yes')],
-                'value' => 1,
+                'value' => 0,
                 'after_element_html' => '<small>Not use lazyload with Images Visible. This feature require module a <a href="https://magepow.com/magento2-speed-optimizer.html?refer=magicslider">Magepow_SpeedOptimizer</a></small>',
             ]
         );
