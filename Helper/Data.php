@@ -2,8 +2,8 @@
 /**
  * Magiccart 
  * @category    Magiccart 
- * @copyright   Copyright (c) 2014 Magiccart (http://www.magiccart.net/) 
- * @license     http://www.magiccart.net/license-agreement.html
+ * @copyright   Copyright (c) 2014 Magiccart (http://www.magepow.com/) 
+ * @license     http://www.magepow.com/license-agreement.html
  * @Author: DOng NGuyen<nguyen@dvn.com>
  * @@Create Date: 2015-12-14 20:26:27
  * @@Modify Date: 2016-03-21 15:59:53
@@ -12,32 +12,59 @@
 
 namespace Magiccart\Magicslider\Helper;
 
-// use \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig;
-
 class Data extends \Magento\Framework\App\Helper\AbstractHelper
 {
+    /**
+     * @var array
+     */
+    protected $configModule;
 
-    const SECTIONS      = 'magicslider';   // module name
-    const GROUPS        = 'general';        // setup general
+    /**
+     * @var \Magento\Framework\Module\Manager
+     */
+    protected $moduleManager;
 
-    public function getConfig($cfg=null)
+
+    public function __construct(
+        \Magento\Framework\App\Helper\Context $context,
+        \Magento\Framework\Module\Manager $moduleManager
+    )
     {
-        return $this->scopeConfig->getValue(
-            $cfg,
-            \Magento\Store\Model\ScopeInterface::SCOPE_STORE
-        );
+        parent::__construct($context);
+        $this->moduleManager = $moduleManager;
+        $module = strtolower(str_replace('Magiccart_', '', $this->_getModuleName()));
+        $this->configModule = $this->getConfig($module);
+
     }
-    
-    public function getGeneralCfg($cfg=null) 
+
+    public function getConfig($cfg='')
     {
-        $config = $this->scopeConfig->getValue(
-            self::SECTIONS.'/'.self::GROUPS,
-            \Magento\Store\Model\ScopeInterface::SCOPE_STORE
-        );
-
-        if(isset($config[$cfg])) return $config[$cfg];
-        return $config;
+        if($cfg) return $this->scopeConfig->getValue( $cfg, \Magento\Store\Model\ScopeInterface::SCOPE_STORE );
+        return $this->scopeConfig;
     }
 
+    public function getConfigModule($cfg='', $value=null)
+    {
+        $values = $this->configModule;
+        if( !$cfg ) return $values;
+        $config  = explode('/', $cfg);
+        $end     = count($config) - 1;
+        foreach ($config as $key => $vl) {
+            if( isset($values[$vl]) ){
+                if( $key == $end ) {
+                    $value = $values[$vl];
+                }else {
+                    $values = $values[$vl];
+                }
+            } 
+
+        }
+        return $value;
+    }
+
+    public function isEnabledModule($moduleName)
+    {
+        return $this->moduleManager->isEnabled($moduleName);
+    }
 
 }
