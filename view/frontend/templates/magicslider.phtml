@@ -8,7 +8,7 @@ if($notLazyload) $notLazyload = (int) $this->getData('visible');
 $imageAsBackground = (int) $this->getData('background-image');
 ?>
 <style type="text/css">.magicslider-caption {display: none;} .magicslider-caption.mobile.desktop{display: block;}</style>
-<div class="<?php echo $selector ?>">
+<div class="<?php echo $selector ?>" data-use-intersection-observer='<?php echo $this->getData('useIntersectionObserver')?>' >
     <div class="magicslider grid-slider <?php echo $this->getData('class')?>"
     <?php foreach ($this->getFrontendCfg() as $opt) :?>
         data-<?php echo $opt ?>='<?php echo $this->getData($opt) ?>'
@@ -60,6 +60,6 @@ $imageAsBackground = (int) $this->getData('background-image');
 <script type="text/javascript">
     require(['jquery','gridSlider'], function($, gridSlider){
         var el  = $('.<?php echo $selector ?>');
-        if(el.length) el.gridSlider();
+        if(el.length) el.gridSlider(el.data());
     });
 </script>

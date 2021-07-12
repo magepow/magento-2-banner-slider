@@ -148,6 +148,19 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             ]
         );
 
+        $fieldset->addField(
+            'IntersectionObserver',
+            'select',
+            [
+                'label' => __('Use IntersectionObserver'),
+                'title' => __('Use IntersectionObserver'),
+                'name' => 'useIntersectionObserver',
+                'options' => ['0' => __('No'), '1' => __('Yes')],
+                'value' => 0,
+                'after_element_html' => '<small>This feature can read more here <a href="https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver">IntersectionObserver</a></small>',
+            ]
+        );
+
         $fieldset->addField('image-class', 'text',
             [
                 'label' => __('Image class'),
