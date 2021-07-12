@@ -1,15 +1,11 @@
 <?php
-/**
- * Magiccart 
- * @category    Magiccart 
- * @copyright   Copyright (c) 2014 Magiccart (http://www.magiccart.net/) 
- * @license     http://www.magiccart.net/license-agreement.html
- * @Author: DOng NGuyen<nguyen@dvn.com>
- * @@Create Date: 2016-01-05 10:40:51
- * @@Modify Date: 2016-03-29 14:48:08
- * @@Function:
- */
 
+/**
+ * @Author: Alex Dong
+ * @Date:   2021-07-12 09:40:49
+ * @Last Modified by:   Alex Dong
+ * @Last Modified time: 2021-07-12 09:41:09
+ */
 
 namespace Magiccart\Magicslider\Controller;
 
@@ -18,7 +14,7 @@ abstract class Index extends \Magento\Framework\App\Action\Action
     /**
      * Magicslider factory.
      *
-     * @var \Magiccart\Magicproduct\Model\MagicsliderFactory
+     * @var \Magiccart\Magicslider\Model\MagicsliderFactory
      */
     protected $_magicsliderFactory;
 
