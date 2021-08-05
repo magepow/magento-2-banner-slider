@@ -79,16 +79,16 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
      */
     protected function _prepareColumns()
     {
-        // $this->addColumn(
-        //     'magicslider_id',
-        //     [
-        //         'header' => __('Magicslider ID'),
-        //         'type' => 'number',
-        //         'index' => 'magicslider_id',
-        //         'header_css_class' => 'col-id',
-        //         'column_css_class' => 'col-id',
-        //     ]
-        // );
+        $this->addColumn(
+            'magicslider_id',
+            [
+                'header' => __('Magicslider ID'),
+                'type' => 'number',
+                'index' => 'magicslider_id',
+                'header_css_class' => 'col-id',
+                'column_css_class' => 'col-id',
+            ]
+        );
 
         $this->addColumn(
             'title',
