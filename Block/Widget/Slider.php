@@ -108,6 +108,7 @@ class Slider extends \Magento\Framework\View\Element\Template implements \Magent
         $data['slides-To-Show'] = $data['visible'];
         // $data['swipe-To-Slide'] = 'true';
         $data['vertical-Swiping'] = $data['vertical'];
+        if(isset($data['center-Padding'])) $data['center-Padding'] = $data['center-Padding'] . 'px';
         // $data['center-Padding'] = $data['padding'];
         $data['slide'] = 1;
         // if(!isset($data['rows'])  || $data['rows'] == 1 ) $data['rows'] = 0;

@@ -227,7 +227,7 @@ class Config extends \Magento\Backend\Block\Widget\Form\Generic implements \Mage
 
         $fieldset->addField('center-Padding', 'text',
             [
-                'label' => __('Center Padding (Example: 50px)'),
+                'label' => __('Center Padding (Example 50px enter value: 50)'),
                 'title' => __('Center Padding'),
                 'name'  => 'center-Padding',
                 'required' => true,
