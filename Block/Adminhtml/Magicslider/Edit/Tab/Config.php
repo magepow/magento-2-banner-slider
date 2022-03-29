@@ -214,6 +214,28 @@ class Config extends \Magento\Backend\Block\Widget\Form\Generic implements \Mage
             ]
         );
 
+        $fieldset->addField('center-Mode', 'select',
+            [
+                'label' => __('Center Mode'),
+                'title' => __('Center Mode'),
+                'name'  => 'center-Mode',
+                'required' => true,
+                'options' => $this->_trueFalse,
+                'value' => 'false',
+            ]
+        );
+
+        $fieldset->addField('center-Padding', 'text',
+            [
+                'label' => __('Center Padding (Example: 50px)'),
+                'title' => __('Center Padding'),
+                'name'  => 'center-Padding',
+                'required' => true,
+                'class' => 'validate-zero-or-greater',
+                'value' => 0,
+            ]
+        );
+
         // $fieldset->addField('widthImages', 'text',
         //     [
         //         'label' => __('width Images'),

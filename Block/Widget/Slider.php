@@ -108,6 +108,7 @@ class Slider extends \Magento\Framework\View\Element\Template implements \Magent
         $data['slides-To-Show'] = $data['visible'];
         // $data['swipe-To-Slide'] = 'true';
         $data['vertical-Swiping'] = $data['vertical'];
+        // $data['center-Padding'] = $data['padding'];
         $data['slide'] = 1;
         // if(!isset($data['rows'])  || $data['rows'] == 1 ) $data['rows'] = 0;
         //$data['lazy-Load'] = 'progressive';
@@ -267,7 +268,7 @@ class Slider extends \Magento\Framework\View\Element\Template implements \Magent
 
     public function getSlideOptions()
     {
-        return array('autoplay', 'arrows', 'autoplay-Speed', 'speed', 'dots', 'fade', 'infinite', 'padding', 'vertical', 'vertical-Swiping', 'responsive', 'rows', 'slides-To-Show');
+        return array('autoplay', 'arrows', 'autoplay-Speed', 'speed', 'dots', 'fade', 'infinite', 'padding', 'vertical', 'vertical-Swiping', 'responsive', 'rows', 'slides-To-Show', 'center-Mode', 'center-Padding');
     }
 
     public function getFrontendCfg()
