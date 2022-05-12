@@ -20,7 +20,7 @@ use Magento\Catalog\Model\Product;
 use Magento\Eav\Model\Entity\Attribute;
 use Magento\Catalog\Api\Data\ProductInterface;
 
-class GalleryMobile  extends\Magento\Catalog\Block\Adminhtml\Product\Helper\Form\Gallery
+class GalleryMobile  extends \Magento\Catalog\Block\Adminhtml\Product\Helper\Form\Gallery
 {
     /**
      * Gallery field name suffix
