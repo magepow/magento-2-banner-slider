@@ -57,7 +57,7 @@ class Image extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\AbstractR
     {
         $storeViewId = $this->getRequest()->getParam('store');
         $item = $this->_magicsliderFactory->create()->setStoreViewId($storeViewId)->load($row->getId());
-        $data = json_decode($item->getConfig(), true);
+        $data = json_decode($item->getConfig() ?? '', true);
         if(!isset($data['media_gallery'])) return '<span>' . __('No media.') . '</span>';
         $gallery = $data['media_gallery'];
         $_images = $gallery['images'];
