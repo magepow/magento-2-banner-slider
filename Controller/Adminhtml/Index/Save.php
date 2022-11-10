@@ -127,7 +127,7 @@ class Save extends \Magiccart\Magicslider\Controller\Adminhtml\Action
                             }
                             unset($images[$key]);                
                         } else {
-                            if(!preg_match ( '/^\/mobile\/*/', $image['file'])){
+                            if(!preg_match ( '/^\/mobile\/*/', (string) $image['file'])){
                                 $images[$key]['file']= '/mobile' . $image['file'];
                             }
 
