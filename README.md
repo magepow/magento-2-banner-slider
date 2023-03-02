@@ -1,3 +1,5 @@
+[<img src="https://github.com/magepow/themeforest/blob/master/shopify/shopify_affiliate.jpg" >](https://shopify.pxf.io/VyL446)
+
 ## Magento 2 Banner Slider Extension ( Magento 2 Magicslider )
 
 Make your store wonderful with magnificent slide effects with Magento 2 Magicslider Extension (commonly known as Banner Slider)
