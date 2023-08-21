@@ -27,7 +27,7 @@ class Edit extends \Magiccart\Magicslider\Controller\Adminhtml\Action
             $model->setStoreViewId($storeViewId)->load($id);
             if (!$model->getId()) {
                 $this->messageManager->addError(__('This Magicslider no longer exists.'));
-                $resultRedirect = $this->_resultRedirectFactory->create();
+                $resultRedirect = $this->resultRedirectFactory->create();
 
                 return $resultRedirect->setPath('*/*/');
             }else {

@@ -41,7 +41,7 @@ abstract class Action extends \Magento\Backend\App\Action
     /**
      * @var \Magento\Backend\Model\View\Result\RedirectFactory
      */
-    protected $_resultRedirectFactory;
+    protected $resultRedirectFactory;
 
     protected $_magicsliderFactory;
 
@@ -86,7 +86,7 @@ abstract class Action extends \Magento\Backend\App\Action
         $this->_resultPageFactory = $resultPageFactory;
         $this->_resultLayoutFactory = $resultLayoutFactory;
         $this->_resultForwardFactory = $resultForwardFactory;
-        $this->_resultRedirectFactory = $context->getResultRedirectFactory();
+        $this->resultRedirectFactory = $context->getResultRedirectFactory();
 
         $this->_magicsliderFactory = $magicsliderFactory;
         $this->_magicsliderCollectionFactory = $magicsliderCollectionFactory;

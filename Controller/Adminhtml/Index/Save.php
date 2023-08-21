@@ -24,7 +24,7 @@ class Save extends \Magiccart\Magicslider\Controller\Adminhtml\Action
      */
     public function execute()
     {
-        $resultRedirect = $this->_resultRedirectFactory->create();
+        $resultRedirect = $this->resultRedirectFactory->create();
 
         if ($data = $this->getRequest()->getPostValue()) {
             $model = $this->_magicsliderFactory->create();
