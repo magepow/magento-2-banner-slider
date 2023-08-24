@@ -33,9 +33,12 @@ $imageAsBackground = (int) $this->getData('background-image');
                     <picture>
                         <?php
                             $img = $image->getMobile();
-                            echo $img ? '<source media="(max-width: ' . $img->getWidth() . 'px)" srcset=" ' . $img->getUrl() . ' ">' : '';     
+                            if($img){
+                                $mWidth = $img->getWidth();
+                                echo '<source media="(min-width: ' . ++ $mWidth . 'px)" srcset=" ' . $image->getUrl() . ' ">';   
+                            }  
                         ?>
-                        <img class="img-responsive <?php /* @escapeNotVerified */ echo $classImage ?>" src="<?php echo $image->getUrl() ?>" alt="<?php echo __($image->getLabel()) ?>" title="<?php echo __($image->getLabel()) ?>" width="<?php echo $image->getWidth() ?>" height="<?php echo $image->getHeight() ?>" />
+                        <img class="img-responsive <?php /* @escapeNotVerified */ echo $classImage ?>" src="<?php echo $img ? $img->getUrl() : $image->getUrl() ?>" alt="<?php echo __($image->getLabel()) ?>" title="<?php echo __($image->getLabel()) ?>" width="<?php echo $image->getWidth() ?>" height="<?php echo $image->getHeight() ?>" />
                     </picture>
                 </a>
                 <?php
