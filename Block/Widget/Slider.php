@@ -162,7 +162,6 @@ class Slider extends \Magento\Framework\View\Element\Template implements \Magent
     public function getMediaGalleryImages()
     {
         $sliderMobile = $this->getMediaGalleryMobileImages();
-        $_image = $this->_imageFactory->create();
         $mediaPath = $this->_filesystem->getDirectoryRead(DirectoryList::MEDIA)->getAbsolutePath();
         if (!$this->hasData('media_gallery_images') && is_array($this->getMediaGallery('images'))) {
             $images = $this->_collectionFactory->create();
@@ -172,6 +171,7 @@ class Slider extends \Magento\Framework\View\Element\Template implements \Magent
                 ) {
                     continue;
                 }
+                $_image = $this->_imageFactory->create();
                 $image['url'] = $this->getMediaUrl($image['file']);
                 $file = self::MEDIA_PATH . $image['file'];
                 $absPath = $mediaPath .$file;
@@ -182,12 +182,13 @@ class Slider extends \Magento\Framework\View\Element\Template implements \Magent
                 $image = new \Magento\Framework\DataObject($image);
                 $img = isset($sliderMobile[$i]) ? $sliderMobile[$i] : '';
                 if ($img){
+                    $_img = $this->_imageFactory->create();
                     $file = self::MEDIA_PATH . $img->getFile();
                     $absPath = $mediaPath .$file;
                     if( !file_exists($absPath) ) continue;
-                    $_image->open($absPath);
-                    $width  =  $_image->getOriginalWidth();
-                    $height =  $_image->getOriginalHeight();
+                    $_img->open($absPath);
+                    $width  =  $_img->getOriginalWidth();
+                    $height =  $_img->getOriginalHeight();
                     $img->setData('width', $width);
                     $img->setData('height', $height);
                     $image->setData('mobile', $img);
