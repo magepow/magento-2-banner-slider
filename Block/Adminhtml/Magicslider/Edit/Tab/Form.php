@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Magiccart 
  * @category    Magiccart 
@@ -12,7 +13,9 @@
 
 namespace Magiccart\Magicslider\Block\Adminhtml\Magicslider\Edit\Tab;
 
+use Magiccart\Magicslider\Block\Adminhtml\Magicslider\Helper\Form\Snippet;
 use Magiccart\Magicslider\Model\Status;
+
 
 class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magento\Backend\Block\Widget\Tab\TabInterface
 {
@@ -85,8 +88,9 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
         if ($model->getId()) {
             $fieldset->addField('magicslider_id', 'hidden', ['name' => 'magicslider_id']);
         }
-
-        $fieldset->addField('title', 'text',
+        $fieldset->addField(
+            'title',
+            'text',
             [
                 'label' => __('Title'),
                 'title' => __('Title'),
@@ -95,7 +99,9 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             ]
         );
 
-        $identifier = $fieldset->addField('identifier', 'text',
+        $identifier = $fieldset->addField(
+            'identifier',
+            'text',
             [
                 'label' => __('Identifier'),
                 'title' => __('Identifier'),
@@ -105,7 +111,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             ]
         );
 
-        if($this->getRequest()->getParam('magicslider_id')){
+        if ($this->getRequest()->getParam('magicslider_id')) {
             $identifier->setAfterElementHtml(
                 '<p class="nm"><small>Don\'t change Identifier</small></p>
                 <script type="text/javascript">
@@ -113,7 +119,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
                     "jquery",
                 ],  function($){
                         jQuery(document).ready(function($) {
-                            var identifier  = "#'.$identifier->getHtmlId().'";                  
+                            var identifier  = "#' . $identifier->getHtmlId() . '";                  
                             if ($(identifier).val()) {$(identifier).prop("disabled", true); }
                         })
                 })
@@ -161,7 +167,9 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             ]
         );
 
-        $fieldset->addField('image-class', 'text',
+        $fieldset->addField(
+            'image-class',
+            'text',
             [
                 'label' => __('Image class'),
                 'title' => __('Image class'),
@@ -199,7 +207,9 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
         }
 
 
-        $fieldset->addField('status', 'select',
+        $fieldset->addField(
+            'status',
+            'select',
             [
                 'label' => __('Status'),
                 'title' => __('Status'),
@@ -208,6 +218,18 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
                 'value' => 1,
             ]
         );
+
+        $subfieldset = $form->addFieldset('sub_fieldset', [
+            'legend' => __('Another way to add sliders to your page'),
+            'class' => 'fieldset-wide'
+        ]);
+
+        $subfieldset->addField('snippet', Snippet::class, [
+            'name' => 'snippet',
+            'label' => __('How to use'),
+            'title' => __('How to use'),
+            'slider' => $model,
+        ]);
 
         $form->addValues($model->getData());
         $this->setForm($form);
@@ -267,5 +289,4 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
     {
         return false;
     }
-
 }

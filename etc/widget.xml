@@ -12,7 +12,7 @@
  
 <widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Magento/Widget/etc/widget.xsd">
 	<widget id="magiccart_magicslider" class="Magiccart\Magicslider\Block\Widget\Slider">
-		<label translate="true">Magicslider Widget</label>
+		<label translate="true">Magiccart Magicslider Widget</label>
 		<description>Magicslider</description>
 		<parameters>
             <parameter name="identifier" xsi:type="select" source_model="Magiccart\Magicslider\Model\Widget\Config\Slider" required="true" visible="true" sort_order="0" >

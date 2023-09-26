@@ -79,12 +79,18 @@ class Slider extends \Magento\Framework\View\Element\Template implements \Magent
         $store = $this->_storeManager->getStore()->getStoreId();
         $this->_magicslider = $this->_magicsliderFactory->create()->getCollection()->addFieldToSelect('*')
                         ->addFieldToFilter('stores',array( array('finset' => 0), array('finset' => $store)))
-                        ->addFieldToFilter('status', 1)
-                        ->addFieldToFilter('identifier', $identifier)
-                        ->setOrder('stores', 'desc')
-                        ->setOrder('magicslider_id', 'desc')
-                        ->setPageSize(1)
-                        ->getFirstItem();
+                        ->addFieldToFilter('status', 1);
+        if($identifier){
+            $this->_magicslider->addFieldToFilter('identifier', $identifier);
+        }else if($this->getMagicsliderId()){
+            $this->_magicslider->addFieldToFilter('magicslider_id', $this->getMagicsliderId());
+        }else if($this->getId()){
+            $this->_magicslider->addFieldToFilter('magicslider_id', $this->getId());
+        }
+        $this->_magicslider = $this->_magicslider->setOrder('stores', 'desc')
+                                    ->setOrder('magicslider_id', 'desc')
+                                    ->setPageSize(1)
+                                    ->getFirstItem();
         if (!$this->_magicslider){
             echo '<div class="message-error error message">Identifier "'. $identifier . '" not exist.</div> ';          
             return;

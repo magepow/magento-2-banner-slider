@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Magiccart 
  * @category    Magiccart 
@@ -44,7 +45,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
         \Magento\Review\Helper\Data $reviewData,
         \Magiccart\Magicslider\Model\Status $status,
         \Magiccart\Magicslider\Model\ResourceModel\Magicslider\CollectionFactory $magicsliderCollectionFactory,
-    
+
         array $data = []
     ) {
 
@@ -68,7 +69,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
     {
         $store = $this->getRequest()->getParam('store');
         $collection = $this->_magicsliderCollectionFactory->create();
-        if($store) $collection->addFieldToFilter('stores',array( array('finset' => 0), array('finset' => $store)));
+        if ($store) $collection->addFieldToFilter('stores', array(array('finset' => 0), array('finset' => $store)));
         $this->setCollection($collection);
 
         return parent::_prepareCollection();
@@ -113,11 +114,21 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
         );
 
         $this->addColumn(
+            'snippet',
+            [
+                'header' => __('Copy Shortcode'),
+                'class' => 'xxx',
+                'width' => '10px',
+                'filter' => false,
+                'renderer' => 'Magiccart\Magicslider\Block\Adminhtml\Magicslider\Helper\Grid\Snippet',
+            ]
+        );
+
+        $this->addColumn(
             'image',
             [
                 'header' => __('Image'),
                 'class' => 'xxx',
-                'width' => '50px',
                 'filter' => false,
                 'renderer' => 'Magiccart\Magicslider\Block\Adminhtml\Magicslider\Helper\Grid\Image',
             ]
@@ -240,5 +251,27 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
             '*/*/edit',
             ['magicslider_id' => $row->getId()]
         );
+    }
+
+    public function toHtml()
+    {
+        $html = '
+            <script type="text/javascript">
+                document.addEventListener("DOMContentLoaded", function() {
+                    document.querySelectorAll(".copy-to-clipboard").forEach((button) => {
+                        button.addEventListener("click", function(e){
+                            e.stopPropagation();
+                            var copyInput = button.closest(".magicslider-snippet").querySelector(".copy-input");
+                            copyInput.type = "text";
+                            copyInput.select();
+                            copyInput.setSelectionRange(0, 99999);
+                            document.execCommand("copy");
+                            copyInput.type = "hidden";
+                        });
+                    });
+                });
+            </script>';
+
+        return parent::toHtml() . $html;
     }
 }
