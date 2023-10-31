@@ -23,12 +23,11 @@ class Image extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\AbstractR
     /**
      * Magicslider factory.
      *
-     * @var \Magestore\Magicslider\Model\MagicsliderFactory
+     * @var \Magiccart\Magicslider\Model\MagicsliderFactory
      */
     protected $_magicsliderFactory;
 
     /**
-     * [__construct description].
      *
      * @param \Magento\Backend\Block\Context              $context
      * @param \Magento\Store\Model\StoreManagerInterface  $storeManager

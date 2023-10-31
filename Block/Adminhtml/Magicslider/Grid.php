@@ -261,7 +261,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                     document.querySelectorAll(".copy-to-clipboard").forEach((button) => {
                         button.addEventListener("click", function(e){
                             e.stopPropagation();
-                            var copyInput = button.closest(".magicslider-snippet").querySelector(".copy-input");
+                            var copyInput = button.closest(".magiccart-snippet").querySelector(".copy-input");
                             copyInput.type = "text";
                             copyInput.select();
                             copyInput.setSelectionRange(0, 99999);
