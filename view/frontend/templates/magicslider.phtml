@@ -21,9 +21,12 @@ $imageAsBackground = (int) $this->getData('background-image');
             >
                 <?php
                     $classImage = $this->getData('image-class');
+                    $loading    = '';
                     if($notLazyload){
                         $classImage .= ' loaded';
                         $notLazyload--;
+                    }else{
+                        $loading = 'loading="lazy"';
                     }
                     if($imageAsBackground){
                         $classImage .= ' background-image';
@@ -38,7 +41,7 @@ $imageAsBackground = (int) $this->getData('background-image');
                                 echo '<source media="(min-width: ' . ++ $mWidth . 'px)" srcset=" ' . $image->getUrl() . ' ">';   
                             }  
                         ?>
-                        <img class="img-responsive <?php /* @escapeNotVerified */ echo $classImage ?>" src="<?php echo $img ? $img->getUrl() : $image->getUrl() ?>" alt="<?php echo __($image->getLabel()) ?>" title="<?php echo __($image->getLabel()) ?>" width="<?php echo $image->getWidth() ?>" height="<?php echo $image->getHeight() ?>" />
+                        <img <?php echo $loading ?> class="img-responsive <?php /* @escapeNotVerified */ echo $classImage ?>" src="<?php echo $img ? $img->getUrl() : $image->getUrl() ?>" alt="<?php echo __($image->getLabel()) ?>" title="<?php echo __($image->getLabel()) ?>" width="<?php echo $image->getWidth() ?>" height="<?php echo $image->getHeight() ?>" />
                     </picture>
                 </a>
                 <?php
