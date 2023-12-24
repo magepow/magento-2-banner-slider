@@ -47,16 +47,17 @@ $imageAsBackground = (int) $this->getData('background-image');
                 <?php
                     if ($img) {
                         $classes = 'caption-' . uniqid();
+                        $caption = isset($image['caption']) ? $this->getCaption($image['caption']) : '';
                         $width   = $img->getWidth();
-                        echo isset($img['caption']) ? '<div class="magicslider-caption mobile ' . $classes . '" >' . $img['caption'] . '</div>' : ''; 
-                        echo isset($image['caption']) ? '<div class="magicslider-caption desktop ' . $classes . '" >' . $image['caption'] . '</div>' : '';
+                        echo $caption ? '<div class="magicslider-caption mobile ' . $classes . '" >' . $caption . '</div>' : ''; 
+                        echo $caption ? '<div class="magicslider-caption desktop ' . $classes . '" >' . $caption . '</div>' : '';
                         $style = '<style>';
                         $style .= '@media only screen and (max-width: ' . $width . 'px){ .mobile.' .$classes . '{display:block}}';
                         $style .= '@media only screen and (min-width: ' . ++$width . 'px){ .desktop.' . $classes . ' {display:block}}';
                         $style .= '</style>';
                         echo $style;
                     } else {
-                        echo isset($image['caption']) ? '<div class="magicslider-caption mobile desktop" >' . $image['caption'] . '</div>' : '';
+                        echo $caption ? '<div class="magicslider-caption mobile desktop" >' . $caption . '</div>' : '';
                     }
                 ?>
             </div>

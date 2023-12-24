@@ -43,6 +43,11 @@ class Slider extends \Magento\Framework\View\Element\Template implements \Magent
     protected $backendUrl;
 
     /**
+     * @var \Magento\Cms\Model\Template\FilterProvider
+     */
+    protected $filterProvider;
+
+    /**
      * @var \Magiccart\Magicslider\Model\MagicsliderFactory
      */
     protected $_magicsliderFactory;
@@ -54,6 +59,7 @@ class Slider extends \Magento\Framework\View\Element\Template implements \Magent
         \Magento\Framework\Data\CollectionFactory $collectionFactory,
         \Magento\Framework\Image\AdapterFactory $imageFactory,
         \Magento\Backend\Model\UrlInterface $backendUrl,
+        \Magento\Cms\Model\Template\FilterProvider $filterProvider,
         \Magiccart\Magicslider\Model\MagicsliderFactory $magicsliderFactory,
         array $data = []
     ) {
@@ -63,6 +69,7 @@ class Slider extends \Magento\Framework\View\Element\Template implements \Magent
         $this->_filesystem = $context->getFilesystem();
         $this->_directory = $this->_filesystem->getDirectoryWrite(DirectoryList::MEDIA);
         $this->backendUrl   = $backendUrl;
+        $this->filterProvider = $filterProvider;
         $this->_magicsliderFactory = $magicsliderFactory;
 
         $this->_sysCfg= (object) $context->getScopeConfig()->getValue(
@@ -297,6 +304,14 @@ class Slider extends \Magento\Framework\View\Element\Template implements \Magent
             $options[]= array($size-1 => $this->getData($screen));
         }
         return $options;
+    }
+
+    public function getCaption($context)
+    {
+        if($context){
+            $storeId = $this->_storeManager->getStore()->getStoreId();
+            return $this->filterProvider->getBlockFilter()->setStoreId($storeId)->filter($context);
+        }
     }
 
 }
