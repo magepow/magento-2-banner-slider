@@ -45,9 +45,9 @@ $imageAsBackground = (int) $this->getData('background-image');
                     </picture>
                 </a>
                 <?php
+                    $caption = isset($image['caption']) ? $this->getCaption($image['caption']) : '';
                     if ($img) {
                         $classes = 'caption-' . uniqid();
-                        $caption = isset($image['caption']) ? $this->getCaption($image['caption']) : '';
                         $width   = $img->getWidth();
                         echo $caption ? '<div class="magicslider-caption mobile ' . $classes . '" >' . $caption . '</div>' : ''; 
                         echo $caption ? '<div class="magicslider-caption desktop ' . $classes . '" >' . $caption . '</div>' : '';
