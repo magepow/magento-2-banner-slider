@@ -121,7 +121,7 @@ class Slider extends \Magento\Framework\View\Element\Template implements \Magent
         $data['slides-To-Show'] = $data['visible'];
         // $data['swipe-To-Slide'] = 'true';
         $data['vertical-Swiping'] = $data['vertical'];
-        $data['adaptive-height'] = $data['adaptive-height'];
+        $data['adaptive-height'] = isset($data['adaptive-height']) ? $data['adaptive-height'] : 'false';
         if(isset($data['center-Padding'])) $data['center-Padding'] = $data['center-Padding'] . 'px';
         // $data['center-Padding'] = $data['padding'];
         $data['slide'] = 1;
