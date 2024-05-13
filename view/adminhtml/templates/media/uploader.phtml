@@ -9,22 +9,31 @@
 /** @var $block \Magento\Backend\Block\Media\Uploader */
 ?>
 <?php
-    $maxWidth   = $block->getImageUploadMaxWidth()  ? $block->getImageUploadMaxWidth()  : 2880;
-    $maxHeight  = $block->getImageUploadMaxHeight() ? $block->getImageUploadMaxHeight() : 1800;
+    $productMetadata = \Magento\Framework\App\ObjectManager::getInstance()->get(\Magento\Framework\App\ProductMetadataInterface::class);
+    $magentoVersion = str_replace(['dev-', '-develop'], ['', '.0'], $productMetadata->getVersion());
+    $breakVersion = '2.4.7';
+    $isBreak = version_compare($magentoVersion, $breakVersion, '<');
+    $maxWidth   = $block->getImageUploadMaxWidth()  ? $block->getImageUploadMaxWidth()  : 3000;
+    $maxHeight  = $block->getImageUploadMaxHeight() ? $block->getImageUploadMaxHeight() : 2000;
 ?>
 <div id="<?= $block->getHtmlId() ?>" class="uploader"
     data-mage-init='{
-        "Magento_Backend/js/media-uploader" : {
+        "<?= $isBreak ? 'Magento_Backend' : 'Magiccart_Magicslider' ?>/js/media-uploader" : {
             "maxFileSize": <?= /* @escapeNotVerified */ $block->getFileSizeService()->getMaxFileSize() ?>,
             "maxWidth":<?= /* @escapeNotVerified */ $maxWidth ?> ,
-            "maxHeight": <?= /* @escapeNotVerified */ $maxHeight ?>
+            "maxHeight": <?= /* @escapeNotVerified */ $maxHeight ?>,
+            "isResizeEnabled": false
         }
     }'
 >
     <div class="fileinput-button form-buttons button">
         <span><?= /* @escapeNotVerified */ __('Browse Files...') ?></span>
-        <input id="fileupload" type="file" name="<?= /* @escapeNotVerified */ $block->getConfig()->getFileField() ?>"
+        <?php if ($isBreak) : ?>
+            <input id="fileupload" type="file" name="<?= /* @escapeNotVerified */ $block->getConfig()->getFileField() ?>"
             data-url="<?= /* @escapeNotVerified */ $block->getConfig()->getUrl() ?>" multiple="multiple" />
+        <?php else : ?>
+            <div class="fileUploader" id="fileUploader-<?= $block->getHtmlId() ?>" data-url="<?= $escaper->escapeHtmlAttr($block->getConfig()->getUrl()) ?>"></div>
+        <?php endif ?>
     </div>
     <div class="clear"></div>
     <script id="<?= $block->getHtmlId() ?>-template" type="text/x-magento-template" data-template="uploader">
@@ -37,4 +46,3 @@
         </div>
     </script>
 </div>
-

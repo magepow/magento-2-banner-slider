@@ -19,7 +19,7 @@ class UploadMobile extends \Magento\Catalog\Controller\Adminhtml\Product\Gallery
         try {
             $uploader = $this->_objectManager->create(
                 'Magento\MediaStorage\Model\File\Uploader',
-                ['fileId' => 'image_mobile']
+                ['fileId' => 'image']
             );
             $uploader->setAllowedExtensions(['jpg', 'jpeg', 'gif', 'png']);
             /** @var \Magento\Framework\Image\Adapter\AdapterInterface $imageAdapter */
@@ -33,7 +33,7 @@ class UploadMobile extends \Magento\Catalog\Controller\Adminhtml\Product\Gallery
             $config = $this->_objectManager->get('Magiccart\Magicslider\Model\Magicslider\Media\ConfigMobile');
             $result = $uploader->save($mediaDirectory->getAbsolutePath($config->getBaseTmpMediaPath()));
 
-            unset($result['tmp_names']);
+            unset($result['tmp_name']);
             unset($result['path']);
 
             $result['url'] = $this->_objectManager->get('Magiccart\Magicslider\Model\Magicslider\Media\ConfigMobile')
