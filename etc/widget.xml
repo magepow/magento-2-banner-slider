@@ -11,10 +11,10 @@
  */ -->
  
 <widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Magento/Widget/etc/widget.xsd">
-	<widget id="magiccart_magicslider" class="Magiccart\Magicslider\Block\Widget\Slider">
-		<label translate="true">Magiccart Magicslider Widget</label>
-		<description>Magicslider</description>
-		<parameters>
+    <widget id="magiccart_magicslider" class="Magiccart\Magicslider\Block\Widget\Slider">
+        <label translate="true">Magiccart Magicslider Widget</label>
+        <description translate="true"><![CDATA[Manage in Admin Panel > Magiccart > Magic Slider > Slider. ]]></description>
+        <parameters>
             <parameter name="identifier" xsi:type="select" source_model="Magiccart\Magicslider\Model\Widget\Config\Slider" required="true" visible="true" sort_order="0" >
                 <label translate="true">Identifier</label>
                 <description translate="true"><![CDATA[Identifier create or manage in Admin Panel > Magiccart > Magic Slider > Slider. ]]></description>
@@ -27,10 +27,10 @@
                 <label translate="true">Template</label>
                 <options>
                     <option name="default" value="magicslider.phtml" selected="true">
-                        <label translate="true">Default</label>
+                        <label translate="true"><![CDATA[Default (magicslider.phtml)]]></label>
                     </option>
                 </options>
             </parameter>
-		</parameters>
-	</widget>
+        </parameters>
+    </widget>
 </widgets>
