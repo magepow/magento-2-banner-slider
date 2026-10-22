@@ -4,13 +4,6 @@
  * See COPYING.txt for license details.
  */
 
-// @codingStandardsIgnoreFile
-
-/**
- * Catalog product gallery attribute
- *
- * @author      Magento Core Team <core@magentocommerce.com>
- */
 namespace Magiccart\Magicslider\Block\Adminhtml\Magicslider\Helper\Form;
 
 use Magento\Framework\Registry;
@@ -27,8 +20,16 @@ class Gallery extends \Magento\Catalog\Block\Adminhtml\Product\Helper\Form\Galle
 
     public function getDataObject()
     {
+        /* Fake product */
+
         $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-        $product = $objectManager->get('Magento\Catalog\Model\Product')->load(3);
+        $productCollectionFactory = $objectManager->get(\Magento\Catalog\Model\ResourceModel\Product\CollectionFactory::class);
+
+        $product = $productCollectionFactory->create()
+            ->addAttributeToSelect('*')
+            ->setOrder('entity_id', 'ASC')
+            ->setPageSize(1)
+            ->getFirstItem();
         
         $this->_coreRegistry->register('current_product', $product, 1);
         $this->_coreRegistry->register('product', $product, 1);

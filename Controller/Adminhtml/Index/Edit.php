@@ -47,14 +47,24 @@ class Edit extends \Magiccart\Magicslider\Controller\Adminhtml\Action
             $model->setData($data);
         }
         
-        $model->setData('media_attributes', array());
-
-        // $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-        // $model = $objectManager->get('Magento\Catalog\Model\Product')->load(3);
-
+        $model->setData('media_attributes', []);
         $this->_coreRegistry->register('magicslider', $model);
-        $this->_coreRegistry->register('current_product', $model, 1);
-        $this->_coreRegistry->register('product', $model, 1);
+
+        /* Fake product */
+        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+        $productCollectionFactory = $objectManager->get(\Magento\Catalog\Model\ResourceModel\Product\CollectionFactory::class);
+
+        $product = $productCollectionFactory->create()
+            ->addAttributeToSelect('*')
+            ->setOrder('entity_id', 'ASC')
+            ->setPageSize(1)
+            ->getFirstItem();
+
+        $product->setData('media_gallery', $model->getData('media_gallery'));
+        $product->setData('media_gallery_mobile', $model->getData('media_gallery_mobile'));
+        $this->_coreRegistry->register('current_product', $product, 1);
+        $this->_coreRegistry->register('product', $product, 1);
+
         $resultPage = $this->_resultPageFactory->create();
 
         return $resultPage;
