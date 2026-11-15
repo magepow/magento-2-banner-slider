@@ -80,7 +80,7 @@ class Slider extends \Magento\Framework\View\Element\Template implements \Magent
         parent::__construct($context, $data);
     }
 
-    protected function _construct()
+    protected function loadMagicslider()
     {
         $identifier = $this->getIdentifier();
         $store = $this->_storeManager->getStore()->getStoreId();
@@ -128,7 +128,12 @@ class Slider extends \Magento\Framework\View\Element\Template implements \Magent
         // if(!isset($data['rows'])  || $data['rows'] == 1 ) $data['rows'] = 0;
         //$data['lazy-Load'] = 'progressive';
         $this->addData($data);
-        parent::_construct();
+    }
+
+    protected function _beforeToHtml()
+    {
+        $this->getMagicslider();
+        return parent::_beforeToHtml();
     }
 
     protected function getCacheLifetime()
@@ -164,6 +169,9 @@ class Slider extends \Magento\Framework\View\Element\Template implements \Magent
 
     public function getMagicslider()
     {
+        if ($this->_magicslider === null) {
+            $this->loadMagicslider();
+        }
         return $this->_magicslider;
     }
 
