@@ -31,8 +31,8 @@ class Gallery extends \Magento\Catalog\Block\Adminhtml\Product\Helper\Form\Galle
             ->setPageSize(1)
             ->getFirstItem();
         
-        $this->_coreRegistry->register('current_product', $product, 1);
-        $this->_coreRegistry->register('product', $product, 1);
+        $this->registry->register('current_product', $product, 1);
+        $this->registry->register('product', $product, 1);
         
         return $product;
     }

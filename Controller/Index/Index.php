@@ -15,6 +15,7 @@ class Index extends \Magiccart\Magicslider\Controller\Index
     {
         $this->_view->loadLayout();
         $this->_view->renderLayout();
+        return $this->getResponse();
     }
 
 }

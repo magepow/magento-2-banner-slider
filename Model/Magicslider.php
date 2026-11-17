@@ -30,7 +30,6 @@ class Magicslider extends \Magento\Framework\Model\AbstractModel
     public function __construct(
         \Magento\Framework\Model\Context $context,
         \Magento\Framework\Registry $registry,
-        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
         \Magiccart\Magicslider\Model\ResourceModel\Magicslider\CollectionFactory $magicsliderCollectionFactory,
         \Magiccart\Magicslider\Model\ResourceModel\Magicslider $resource,
         \Magiccart\Magicslider\Model\ResourceModel\Magicslider\Collection $resourceCollection

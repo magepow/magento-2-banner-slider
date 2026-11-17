@@ -28,18 +28,18 @@ class Image extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\AbstractR
     protected $_magicsliderFactory;
 
     /**
-     *
-     * @param \Magento\Backend\Block\Context              $context
-     * @param \Magento\Store\Model\StoreManagerInterface  $storeManager
-     * @param \Magento\Cms\Model\BlockFactory $blockFactory
-     * @param array                                       $data
+     * @var \Magiccart\Magicslider\Model\ResourceModel\Magicslider
      */
+    protected $magicsliderResource;
+
     public function __construct(
         \Magento\Backend\Block\Context $context,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
         \Magiccart\Magicslider\Model\MagicsliderFactory $magicsliderFactory,
+        \Magiccart\Magicslider\Model\ResourceModel\Magicslider $magicsliderResource,
         array $data = []
     ) {
+        $this->magicsliderResource = $magicsliderResource;
         parent::__construct($context, $data);
         $this->_storeManager = $storeManager;
         $this->_magicsliderFactory  = $magicsliderFactory;
@@ -55,7 +55,8 @@ class Image extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\AbstractR
     public function render(\Magento\Framework\DataObject $row)
     {
         $storeViewId = $this->getRequest()->getParam('store');
-        $item = $this->_magicsliderFactory->create()->setStoreViewId($storeViewId)->load($row->getId());
+        $item = $this->_magicsliderFactory->create()->setStoreViewId($storeViewId);
+        $this->magicsliderResource->load($item, $row->getId());
         $data = json_decode($item->getConfig() ?? '', true);
         if(!isset($data['media_gallery'])) return '<span>' . __('No media.') . '</span>';
         $gallery = $data['media_gallery'];

@@ -30,18 +30,18 @@ class Snippet extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\Abstrac
     protected $magicsliderFactory;
 
     /**
-     *
-     * @param \Magento\Backend\Block\Context              $context
-     * @param \Magento\Store\Model\StoreManagerInterface  $storeManager
-     * @param \Magento\Cms\Model\BlockFactory $blockFactory
-     * @param array                                       $data
+     * @var \Magiccart\Magicslider\Model\ResourceModel\Magicslider
      */
+    protected $magicsliderResource;
+
     public function __construct(
         \Magento\Backend\Block\Context $context,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
         \Magiccart\Magicslider\Model\MagicsliderFactory $magicsliderFactory,
+        \Magiccart\Magicslider\Model\ResourceModel\Magicslider $magicsliderResource,
         array $data = []
     ) {
+        $this->magicsliderResource = $magicsliderResource;
         parent::__construct($context, $data);
         $this->storeManager = $storeManager;
         $this->magicsliderFactory  = $magicsliderFactory;
@@ -57,7 +57,8 @@ class Snippet extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\Abstrac
     public function render(\Magento\Framework\DataObject $row)
     {
         $storeViewId = $this->getRequest()->getParam('store');
-        $item = $this->magicsliderFactory->create()->setStoreViewId($storeViewId)->load($row->getId());
+        $item = $this->magicsliderFactory->create()->setStoreViewId($storeViewId);
+        $this->magicsliderResource->load($item, $row->getId());
         $identifier = $item->getIdentifier();
         $shortcodeWidget = $this->_escaper->escapeHtml('{{widget type="Magiccart\Magicslider\Block\Widget\Slider" identifier="' . $identifier . '" template="magicslider.phtml"}}');
         $shortcodeBlock  = $this->_escaper->escapeHtml('<?= $block->getLayout()->createBlock(\'Magiccart\Magicslider\Block\Widget\Slider\')->setIdentifier("' . $identifier . '")->setTemplate(\'magicslider.phtml\')->toHtml(); ?>');

@@ -77,7 +77,7 @@ class Content extends \Magento\Catalog\Block\Adminhtml\Product\Helper\Form\Galle
         $this->_eventManager->dispatch('catalog_product_gallery_prepare_layout', ['block' => $this]);
         // $this->setTemplate('catalog/product/helper/gallery.phtml');
         // $this->setTemplate('catalog/video/helper/gallery.phtml');
-        // return parent::_prepareLayout();
+        return $this;
     }
 
     public function  getImageUploadConfigData()
