@@ -164,9 +164,10 @@ class Images extends \Magento\Backend\Block\Widget\Form\Generic implements \Mage
         // $content = $this->getChildBlock('content');
         $content = $this->getLayout()->createBlock(
                 // '\Magento\Catalog\Block\Adminhtml\Product\Helper\Form\Gallery\Content' 
-                'Magiccart\Magicslider\Block\Adminhtml\Magicslider\Helper\Form\Gallery\Content'
+                'Magiccart\Magicslider\Block\Adminhtml\Magicslider\Helper\Form\Gallery\Content',
+                '',
+                ['data' => ['template' => 'helper/gallery.phtml']]
             );
-        $content->setTemplate('helper/gallery.phtml');
         $content->getUploader()->getConfig()->setUrl(
             // $this->_urlBuilder->addSessionParam()->getUrl('magicslider/index_gallery/upload')
             $this->_urlBuilder->getUrl('magicslider/index_gallery/upload')
@@ -178,11 +179,11 @@ class Images extends \Magento\Backend\Block\Widget\Form\Generic implements \Mage
         //     );
         $video = $this->getLayout()->createBlock(
                 'Magiccart\Magicslider\Block\Adminhtml\Magicslider\Edit\NewVideo',
-                 'new-video'
+                 'new-video',
+                 ['data' => ['template' => 'Magento_ProductVideo::product/edit/slideout/form.phtml']]
             );
 
 
-        $video->setTemplate('Magento_ProductVideo::product/edit/slideout/form.phtml');
         $content->setId($this->getHtmlId() . '_content')->setElement($gallery);
         // $content->setFormName($this->formName);
         $content->setFormName('product_form');

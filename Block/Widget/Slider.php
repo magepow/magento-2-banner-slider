@@ -48,9 +48,9 @@ class Slider extends \Magento\Framework\View\Element\Template implements \Magent
     protected $filterProvider;
 
     /**
-     * @var \Magiccart\Magicslider\Model\MagicsliderFactory
+     * @var \Magiccart\Magicslider\Model\ResourceModel\Magicslider\CollectionFactory
      */
-    protected $_magicsliderFactory;
+    protected $_magicsliderCollectionFactory;
 
     protected $_magicslider;
 
@@ -60,7 +60,7 @@ class Slider extends \Magento\Framework\View\Element\Template implements \Magent
         \Magento\Framework\Image\AdapterFactory $imageFactory,
         \Magento\Backend\Model\UrlInterface $backendUrl,
         \Magento\Cms\Model\Template\FilterProvider $filterProvider,
-        \Magiccart\Magicslider\Model\MagicsliderFactory $magicsliderFactory,
+        \Magiccart\Magicslider\Model\ResourceModel\Magicslider\CollectionFactory $magicsliderCollectionFactory,
         array $data = []
     ) {
 
@@ -70,7 +70,7 @@ class Slider extends \Magento\Framework\View\Element\Template implements \Magent
         $this->_directory = $this->_filesystem->getDirectoryWrite(DirectoryList::MEDIA);
         $this->backendUrl   = $backendUrl;
         $this->filterProvider = $filterProvider;
-        $this->_magicsliderFactory = $magicsliderFactory;
+        $this->_magicsliderCollectionFactory = $magicsliderCollectionFactory;
 
         $this->_sysCfg= (object) $context->getScopeConfig()->getValue(
             'magicslider',
@@ -84,7 +84,7 @@ class Slider extends \Magento\Framework\View\Element\Template implements \Magent
     {
         $identifier = $this->getIdentifier();
         $store = $this->_storeManager->getStore()->getStoreId();
-        $this->_magicslider = $this->_magicsliderFactory->create()->getCollection()->addFieldToSelect('*')
+        $this->_magicslider = $this->_magicsliderCollectionFactory->create()->addFieldToSelect('*')
                         ->addFieldToFilter('stores',array( array('finset' => 0), array('finset' => $store)))
                         ->addFieldToFilter('status', 1);
         if($identifier){
@@ -99,7 +99,7 @@ class Slider extends \Magento\Framework\View\Element\Template implements \Magent
                                     ->setPageSize(1)
                                     ->getFirstItem();
         if (!$this->_magicslider){
-            echo '<div class="message-error error message">Identifier "'. $identifier . '" not exist.</div> ';          
+            printf('%s', '<div class="message-error error message">Identifier "' . $identifier . '" not exist.</div> ');
             return;
         }
         if (!$this->_magicslider->getStatus()){

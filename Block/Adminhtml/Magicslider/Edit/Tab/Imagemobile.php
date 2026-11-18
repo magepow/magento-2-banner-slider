@@ -163,9 +163,10 @@ class Imagemobile extends \Magento\Backend\Block\Widget\Form\Generic implements 
         // $content = $this->getChildBlock('content');
         $contents = $this->getLayout()->createBlock(
                 // '\Magento\Catalog\Block\Adminhtml\Product\Helper\Form\Gallery\Content' 
-                'Magiccart\Magicslider\Block\Adminhtml\Magicslider\Helper\Form\Gallery\ContentMobile'
+                'Magiccart\Magicslider\Block\Adminhtml\Magicslider\Helper\Form\Gallery\ContentMobile',
+                '',
+                ['data' => ['template' => 'helper/gallery.phtml']]
             );
-        $contents->setTemplate('helper/gallery.phtml');
         $contents->getUploader()->getConfig()->setUrl(
             // $this->_urlBuilder->addSessionParam()->getUrl('magicslider/index_gallery/uploadMobile')
             $this->_urlBuilder->getUrl('magicslider/index_gallery/uploadMobile')
@@ -177,10 +178,10 @@ class Imagemobile extends \Magento\Backend\Block\Widget\Form\Generic implements 
         //     );
         $video = $this->getLayout()->createBlock(
                 'Magiccart\Magicslider\Block\Adminhtml\Magicslider\Edit\NewVideo',
-                 'new-video-mobile'
+                 'new-video-mobile',
+                 ['data' => ['template' => 'Magento_ProductVideo::product/edit/slideout/form.phtml']]
             );
 
-        $video->setTemplate('Magento_ProductVideo::product/edit/slideout/form.phtml');
         $contents->setId($this->getHtmlId() . '_content')->setElement($gallerys);
         // $content->setFormName($this->formName);
         $contents->setFormName('product_form');
